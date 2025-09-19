@@ -12,7 +12,7 @@ for the check:
 
 # Usage
 
-    $ ./pwndck.py -h
+    $ pwndck.py -h
     usage: pwndck.py [-h] [password]
     
     Report # of password hits in HaveIBeenPwned
