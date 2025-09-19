@@ -8,6 +8,7 @@ for the check:
   * This use does not require an API key. Anyone can run it.
   * This is more secure than the [web page tool](https://haveibeenpwned.com/Passwords).
     your password is not exposed beyond your local machine.
+  * It returns the number of times the password occurs in the database.
 
 # Usage
 
