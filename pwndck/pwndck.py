@@ -70,7 +70,12 @@ def parse_args():
     return args
 
 
-def main(password: Optional[str] = None) -> None:
+def main() -> None:
+
+    args = parse_args()
+
+    password = args.password
+
     if password is None:
         password = input("Enter password to check: ")
 
@@ -79,6 +84,4 @@ def main(password: Optional[str] = None) -> None:
 
 if __name__ == "__main__":
 
-    args = parse_args()
-
-    main(args.password)
+    main()
