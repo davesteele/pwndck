@@ -9,6 +9,8 @@ import requests
 
 apiurl = "https://api.pwnedpasswords.com/range/{}"
 
+class PwndException(Exception):
+    pass
 
 def get_sha(data: str) -> str:
     hlib = hashlib.sha1()
@@ -25,6 +27,10 @@ def get_hashes(key: str) -> str:
     url = apiurl.format(key)
     r = requests.get(url)
     response = r.text
+
+    if r.status_code != 200:
+        raise PwndException(r.reason)
+
     return response
 
 
