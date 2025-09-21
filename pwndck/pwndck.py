@@ -2,6 +2,7 @@
 
 import argparse
 import hashlib
+import sys
 import textwrap
 from typing import Optional
 
@@ -85,7 +86,11 @@ def main() -> None:
     if password is None:
         password = input("Enter password to check: ")
 
-    print(procpw(password))
+    pwcount = procpw(password)
+    print(pwcount)
+
+    if pwcount > 0:
+        sys.exit(-1)
 
 
 if __name__ == "__main__":
