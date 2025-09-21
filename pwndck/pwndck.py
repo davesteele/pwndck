@@ -73,6 +73,13 @@ def parse_args():
         type=str,
     )
 
+    parser.add_argument(
+        "-q", "--quiet",
+        help="Suppress output",
+        default=False,
+        action="store_true"
+    )
+
     args = parser.parse_args()
     return args
 
@@ -87,7 +94,9 @@ def main() -> None:
         password = input("Enter password to check: ")
 
     pwcount = procpw(password)
-    print(pwcount)
+
+    if not args.quiet:
+        print(pwcount)
 
     if pwcount > 0:
         sys.exit(-1)
