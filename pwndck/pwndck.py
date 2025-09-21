@@ -53,7 +53,7 @@ def parse_args():
         description="Report # of password hits in HaveIBeenPwned",
         epilog=textwrap.dedent(
             """
-            Evaluate a password agains the HaveIBeenPwned password
+            Evaluate a password against the HaveIBeenPwned password
             database, and return the number of accounts for which it
             has been reported as compromised.
             If the password is not specified on the command line, the
