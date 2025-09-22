@@ -4,14 +4,15 @@ import argparse
 import hashlib
 import sys
 import textwrap
-from typing import Optional
 
 import requests
 
 apiurl = "https://api.pwnedpasswords.com/range/{}"
 
+
 class PwndException(Exception):
     pass
+
 
 def get_sha(data: str) -> str:
     hlib = hashlib.sha1()
@@ -74,10 +75,11 @@ def parse_args():
     )
 
     parser.add_argument(
-        "-q", "--quiet",
+        "-q",
+        "--quiet",
         help="Suppress output",
         default=False,
-        action="store_true"
+        action="store_true",
     )
 
     args = parser.parse_args()
