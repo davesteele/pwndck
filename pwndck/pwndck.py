@@ -58,8 +58,12 @@ def parse_args():
             Evaluate a password against the HaveIBeenPwned password
             database, and return the number of accounts for which it
             has been reported as compromised.
+
             If the password is not specified on the command line, the
             user will be prompted.
+
+            The command returns with an error
+            code if the password is found in the database.
 
             See https://haveibeenpwned.com/API/v3#PwnedPasswords
             """
