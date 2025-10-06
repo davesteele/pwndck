@@ -4,6 +4,7 @@ import argparse
 import hashlib
 import sys
 import textwrap
+from argparse_formatter import FlexiFormatter
 
 import requests
 
@@ -68,6 +69,7 @@ def parse_args():
             See https://haveibeenpwned.com/API/v3#PwnedPasswords
             """
         ),
+        formatter_class=FlexiFormatter,
     )
 
     parser.add_argument(
