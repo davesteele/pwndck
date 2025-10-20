@@ -27,10 +27,11 @@ dependencies = [
     "argparse-formatter (>=1.4,<2.0)"
 ]
 
-[urls]
-homepage = "https://pypi.org/project/pwndck/"
-repository = "https://github.com/davesteele/pwndck"
-"Bug Tracker" = "https://github.com/davesteele/pwndck/issues"
+[project.urls]
+Homepage = "https://github.com/davesteele/pwndck"
+Source = "https://github.com/davesteele/pwndck.git"
+Issues = "https://github.com/davesteele/pwndck/issues"
+Changelog = "https://github.com/davesteele/pwndck/blob/main/CHANGELOG.md"
 
 [project.scripts]
 pwndck = "pwndck.pwndck:main"
