@@ -28,7 +28,7 @@ dependencies = [
 ]
 
 [urls]
-homepage = ""
+homepage = "https://pypi.org/project/pwndck/"
 repository = "https://github.com/davesteele/pwndck"
 "Bug Tracker" = "https://github.com/davesteele/pwndck/issues"
 

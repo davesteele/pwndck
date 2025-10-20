@@ -10,6 +10,9 @@ for the check:
     your password is not exposed beyond your local machine.
   * It returns the number of times the password occurs in the database.
 
+# Install
+Install from [PyPi](https://pypi.org/project/pwndck/)
+
 # Usage
 
     $ pwndck.py -h
