@@ -1,0 +1,12 @@
+#!/usr/bin/make -f
+
+export PYBUILD_DISABLE=test
+export PYBUILD_NAME=pwndck
+
+%:
+	dh $@ --with python3 --buildsystem=pybuild
+
+override_dh_auto_build:
+	dh_auto_build
+	pandoc debian/pwndck.1.md -s -t man -o debian/pwndck.1
+	sed -i 's/\\\[en\]/\\\-/' debian/pwndck.1

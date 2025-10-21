@@ -1,0 +1,27 @@
+Source: pwndck
+Priority: optional
+Section: misc
+Maintainer: David Steele <steele@debian.org>
+Build-Depends:
+    debhelper-compat (=12),
+    pybuild-plugin-pyproject,
+    dh-python,
+    python3 (>= 3.9),
+    python3-poetry,
+    pandoc,
+Standards-Version: 4.5.1
+Rules-Requires-Root: binary-targets
+Homepage: https://github.com/davesteele/pwndck
+Vcs-Git: https://github.com/davesteele/pwndck.git -b debian
+Vcs-Browser: https://github.com/davesteele/pwndck
+
+Package: pwndck
+Architecture: all
+Depends:
+    ${python3:Depends},
+    ${misc:Depends},
+    python3-requests,
+Description: Check passwords against the HaveIBeenPwned leak database
+ pwndck queries the HaveIBeenPwned password leak database, returning the number
+ of times the password has been identified as leaked. It uses the published
+ API, and requires no authentication.
