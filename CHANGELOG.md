@@ -6,9 +6,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Updates
-- Added CHANGELOG.md
-- Added/Fixed project URLs
-
 ## [1.0] - 2025-10-20
 - Original Release
