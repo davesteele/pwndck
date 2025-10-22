@@ -1,0 +1,9 @@
+# Metadata about the upstream project.
+# See https://wiki.debian.org/UpstreamMetadata
+
+Bug-Database: https://github.com/davesteele/pwndck/issues
+Bug-Submit: https://github.com/davesteele/pwndck/issues/new
+Changelog: https://github.com/davesteele/pwndck/blob/main/CHANGELOG.md
+Repository-Browse: https://github.com/davesteele/pwndck
+Repository: https://github.com/davesteele/pwndck.git
+Archive: https://pypi.org/project/pwndck/
