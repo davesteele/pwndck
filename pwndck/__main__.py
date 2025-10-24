@@ -1,0 +1,3 @@
+import pwndck
+
+pwndck.main()
