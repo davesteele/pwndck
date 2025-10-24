@@ -33,7 +33,10 @@ def get_hashes(key: str) -> str:
     per https://haveibeenpwned.com/API/v3#PwnedPasswords"""
 
     url = apiurl.format(key)
-    r = requests.get(url)
+    headers = {
+        "Add-Padding": "true",
+    }
+    r = requests.get(url, headers=headers)
     response = r.text
 
     if r.status_code != 200:
