@@ -11,6 +11,8 @@ import hashlib
 import sys
 import textwrap
 
+from importlib.metadata import version
+
 import requests
 
 apiurl = "https://api.pwnedpasswords.com/range/{}"
@@ -34,6 +36,7 @@ def get_hashes(key: str) -> str:
 
     url = apiurl.format(key)
     headers = {
+        "User-Agent": f"PwndCk/{version("pwndck")}",
         "Add-Padding": "true",
     }
     r = requests.get(url, headers=headers)
