@@ -21,6 +21,7 @@ Depends:
     ${python3:Depends},
     ${misc:Depends},
     python3-requests,
+    python3-brotli,
 Description: Check passwords against the HaveIBeenPwned leak database
  pwndck queries the HaveIBeenPwned password leak database, returning the number
  of times the password has been identified as leaked. It uses the published
