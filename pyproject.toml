@@ -10,7 +10,7 @@ build-backend = "poetry.core.masonry.api"
 
 [project]
 name = "pwndck"
-version = "0.1"
+version = "0.2"
 description = "Check for leaked passwords in HaveIBeenPwned."
 readme = "README.md"
 requires-python = ">=3.9"
@@ -30,7 +30,8 @@ classifiers = [
 ]
 dependencies = [
     "requests (>=2.32.5,<3.0.0)",
-    "argparse-formatter (>=1.4,<2.0)"
+    "argparse-formatter (>=1.4,<2.0)",
+    "brotli (>=1.1.0)"
 ]
 
 [project.urls]

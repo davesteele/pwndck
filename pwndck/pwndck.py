@@ -11,6 +11,8 @@ import hashlib
 import sys
 import textwrap
 
+from importlib.metadata import version
+
 import requests
 
 apiurl = "https://api.pwnedpasswords.com/range/{}"
@@ -33,7 +35,11 @@ def get_hashes(key: str) -> str:
     per https://haveibeenpwned.com/API/v3#PwnedPasswords"""
 
     url = apiurl.format(key)
-    r = requests.get(url)
+    headers = {
+        "User-Agent": f"PwndCk/{version("pwndck")}",
+        "Add-Padding": "true",
+    }
+    r = requests.get(url, headers=headers)
     response = r.text
 
     if r.status_code != 200:

@@ -6,5 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [1.0] - 2025-10-20
+## [0.2] - 2025-10-24
+- Enable Brotli compression on HIBP requests
+- Enable padding on HIBP responses for extra security
+
+## [0.1] - 2025-10-20
 - Original Release
