@@ -1,3 +1,10 @@
+pwndck (0.2-1) unstable; urgency=medium
+
+  * Add padding.
+  * Add a PwndCk User Agent.
+
+ -- David Steele <steele@debian.org>  Fri, 24 Oct 2025 23:18:56 -0400
+
 pwndck (0.1-1) unstable; urgency=medium
 
   * Initial release. (Closes: #1118480)
