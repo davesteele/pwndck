@@ -16,6 +16,8 @@ from typing import List
 
 import requests
 
+from pwndck import FlexiHelpFormatter
+
 apiurl = "https://api.pwnedpasswords.com/range/{}"
 
 
@@ -85,6 +87,7 @@ def parse_args():
             See https://haveibeenpwned.com/API/v3#PwnedPasswords
             """
         ),
+        formatter_class=FlexiHelpFormatter,
     )
 
     parser.add_argument(
