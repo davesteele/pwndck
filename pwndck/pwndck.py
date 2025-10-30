@@ -102,7 +102,6 @@ def parse_args():
 
 
 def main() -> None:
-
     args = parse_args()
 
     password = args.password
@@ -120,5 +119,4 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-
     main()
