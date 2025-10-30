@@ -55,7 +55,7 @@ def procpw(pw: str) -> int:
     body = hsh[5:]
 
     for line in get_hashes(key).splitlines():
-        if body in line:
+        if line.startswith(body):
             (body, count) = line.split(":")
             return int(count)
 
