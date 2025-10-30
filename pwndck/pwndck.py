@@ -7,11 +7,12 @@
 #
 
 import argparse
+import fileinput
 import hashlib
 import sys
 import textwrap
-
 from importlib.metadata import version
+from typing import List
 
 import requests
 
@@ -36,7 +37,7 @@ def get_hashes(key: str) -> str:
 
     url = apiurl.format(key)
     headers = {
-        "User-Agent": f"PwndCk/{version("pwndck")}",
+        "User-Agent": f"PwndCk/{version('pwndck')}",
         "Add-Padding": "true",
     }
     r = requests.get(url, headers=headers)
@@ -55,7 +56,7 @@ def procpw(pw: str) -> int:
     body = hsh[5:]
 
     for line in get_hashes(key).splitlines():
-        if body in line:
+        if line.startswith(body):
             (body, count) = line.split(":")
             return int(count)
 
@@ -67,9 +68,13 @@ def parse_args():
         description="Report # of password hits in HaveIBeenPwned",
         epilog=textwrap.dedent(
             """
-            Evaluate a password against the HaveIBeenPwned password
-            database, and return the number of accounts for which it
-            has been reported as compromised.
+            Evaluate one or more passwords against the HaveIBeenPwned
+            password database, and return the number of accounts for which
+            they have been reported as compromised.
+
+            The number of entries found in the database is returned. if
+            multiple passwords are being checked, the password name is also
+            returned.
 
             If the password is not specified on the command line, the
             user will be prompted.
@@ -83,14 +88,6 @@ def parse_args():
     )
 
     parser.add_argument(
-        "password",
-        help="The password to check",
-        nargs="?",
-        default=None,
-        type=str,
-    )
-
-    parser.add_argument(
         "-q",
         "--quiet",
         help="Suppress output",
@@ -98,28 +95,76 @@ def parse_args():
         action="store_true",
     )
 
+    group = parser.add_mutually_exclusive_group()
+
+    group.add_argument(
+        "-i",
+        "--input",
+        type=str,
+        nargs="?",
+        default=None,
+        help="File containing passwords, one per line ('-' for stdin)",
+    )
+
+    group.add_argument(
+        "passwords",
+        help="The password(s) to check",
+        nargs="*",
+        default=None,
+        type=str,
+    )
+
     args = parser.parse_args()
     return args
 
 
-def main() -> None:
+def get_passwords(
+    passwords_arg: List[str],
+    input_file: str,
+) -> List[str]:
+    if passwords_arg:
+        return passwords_arg
 
+    if input_file:
+        return [
+            f.strip()
+            for f in fileinput.input(files=(input_file,), encoding="utf-8")
+        ]
+
+    return [input("Enter password to check: ")]
+
+
+def main() -> None:
     args = parse_args()
 
-    password = args.password
+    try:
+        passwords = get_passwords(args.passwords, args.input)
+    except FileNotFoundError:
+        if not args.quiet:
+            print("ERROR - Input file not found")
+        sys.exit(-2)
+    except PermissionError:
+        if not args.quiet:
+            print("ERROR - Insufficient permissions for input file")
+        sys.exit(-2)
 
-    if password is None:
-        password = input("Enter password to check: ")
+    fail = False
+    verbose = len(passwords) > 1
+    for password in passwords:
+        pwcount = procpw(password)
 
-    pwcount = procpw(password)
+        if not args.quiet:
+            if verbose:
+                print(f"{pwcount} {password}")
+            else:
+                print(pwcount)
 
-    if not args.quiet:
-        print(pwcount)
+        if pwcount > 0:
+            fail = True
 
-    if pwcount > 0:
+    if fail:
         sys.exit(-1)
 
 
 if __name__ == "__main__":
-
     main()
