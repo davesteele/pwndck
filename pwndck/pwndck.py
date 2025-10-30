@@ -7,6 +7,7 @@
 #
 
 import argparse
+import fileinput
 import hashlib
 import sys
 import textwrap
@@ -87,14 +88,6 @@ def parse_args():
     )
 
     parser.add_argument(
-        "passwords",
-        help="The password(s) to check",
-        nargs="*",
-        default=None,
-        type=str,
-    )
-
-    parser.add_argument(
         "-q",
         "--quiet",
         help="Suppress output",
@@ -102,12 +95,41 @@ def parse_args():
         action="store_true",
     )
 
+    group = parser.add_mutually_exclusive_group()
+
+    group.add_argument(
+        "-i",
+        "--input",
+        type=str,
+        nargs="?",
+        default=None,
+        help="File containing passwords, one per line ('-' for stdin)",
+    )
+
+    group.add_argument(
+        "passwords",
+        help="The password(s) to check",
+        nargs="*",
+        default=None,
+        type=str,
+    )
+
     args = parser.parse_args()
     return args
 
-def get_passwords(passwords_arg: List[str]) -> List[str]:
+
+def get_passwords(
+    passwords_arg: List[str],
+    input_file: str,
+) -> List[str]:
     if passwords_arg:
         return passwords_arg
+
+    if input_file:
+        return [
+            f.strip()
+            for f in fileinput.input(files=(input_file,), encoding="utf-8")
+        ]
 
     return [input("Enter password to check: ")]
 
@@ -115,7 +137,16 @@ def get_passwords(passwords_arg: List[str]) -> List[str]:
 def main() -> None:
     args = parse_args()
 
-    passwords = get_passwords(args.passwords)
+    try:
+        passwords = get_passwords(args.passwords, args.input)
+    except FileNotFoundError:
+        if not args.quiet:
+            print("ERROR - Input file not found")
+        sys.exit(-2)
+    except PermissionError:
+        if not args.quiet:
+            print("ERROR - Insufficient permissions for input file")
+        sys.exit(-2)
 
     fail = False
     verbose = len(passwords) > 1
@@ -128,10 +159,8 @@ def main() -> None:
             else:
                 print(pwcount)
 
-
         if pwcount > 0:
             fail = True
-
 
     if fail:
         sys.exit(-1)
