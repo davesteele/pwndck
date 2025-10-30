@@ -11,6 +11,7 @@ import hashlib
 import sys
 import textwrap
 from importlib.metadata import version
+from typing import List
 
 import requests
 
@@ -66,9 +67,13 @@ def parse_args():
         description="Report # of password hits in HaveIBeenPwned",
         epilog=textwrap.dedent(
             """
-            Evaluate a password against the HaveIBeenPwned password
-            database, and return the number of accounts for which it
-            has been reported as compromised.
+            Evaluate one or more passwords against the HaveIBeenPwned
+            password database, and return the number of accounts for which
+            they have been reported as compromised.
+
+            The number of entries found in the database is returned. if
+            multiple passwords are being checked, the password name is also
+            returned.
 
             If the password is not specified on the command line, the
             user will be prompted.
@@ -82,9 +87,9 @@ def parse_args():
     )
 
     parser.add_argument(
-        "password",
-        help="The password to check",
-        nargs="?",
+        "passwords",
+        help="The password(s) to check",
+        nargs="*",
         default=None,
         type=str,
     )
@@ -100,21 +105,35 @@ def parse_args():
     args = parser.parse_args()
     return args
 
+def get_passwords(passwords_arg: List[str]) -> List[str]:
+    if passwords_arg:
+        return passwords_arg
+
+    return [input("Enter password to check: ")]
+
 
 def main() -> None:
     args = parse_args()
 
-    password = args.password
+    passwords = get_passwords(args.passwords)
 
-    if password is None:
-        password = input("Enter password to check: ")
+    fail = False
+    verbose = len(passwords) > 1
+    for password in passwords:
+        pwcount = procpw(password)
 
-    pwcount = procpw(password)
+        if not args.quiet:
+            if verbose:
+                print(f"{pwcount} {password}")
+            else:
+                print(pwcount)
 
-    if not args.quiet:
-        print(pwcount)
 
-    if pwcount > 0:
+        if pwcount > 0:
+            fail = True
+
+
+    if fail:
         sys.exit(-1)
 
 
