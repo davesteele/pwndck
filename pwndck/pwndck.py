@@ -150,6 +150,8 @@ def main() -> None:
         if not args.quiet:
             print("ERROR - Insufficient permissions for input file")
         sys.exit(-2)
+    except KeyboardInterrupt:
+        sys.exit(-2)
 
     fail = False
     verbose = len(passwords) > 1
