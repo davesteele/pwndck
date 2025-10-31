@@ -1,3 +1,3 @@
-import pwndck
+from pwndck import main
 
-pwndck.main()
+main()
