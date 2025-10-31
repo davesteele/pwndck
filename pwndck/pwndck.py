@@ -82,7 +82,7 @@ def parse_args():
             user will be prompted.
 
             The command returns with an error
-            code if the password is found in the database.
+            code if a password is found in the database.
 
             See https://haveibeenpwned.com/API/v3#PwnedPasswords
             """
@@ -93,7 +93,7 @@ def parse_args():
     parser.add_argument(
         "-q",
         "--quiet",
-        help="Suppress output",
+        help="suppress output",
         default=False,
         action="store_true",
     )
@@ -106,7 +106,7 @@ def parse_args():
         type=str,
         nargs="?",
         default=None,
-        help="File containing passwords, one per line ('-' for stdin)",
+        help="file containing passwords, one per line ('-' for stdin)",
     )
 
     group.add_argument(
