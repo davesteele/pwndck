@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 - Support processing of multiple passwords
 - Support a password input file
+- General cleanup
 
 ## [0.2] - 2025-10-24
 - Enable Brotli compression on HIBP requests
