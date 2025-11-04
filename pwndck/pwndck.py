@@ -140,20 +140,23 @@ def get_passwords(
     return []
 
 
+def quiet_print(string, quiet) -> None:
+    if not quiet:
+        print(string)
+
 def main() -> None:
     args = parse_args()
 
     try:
         passwords = get_passwords(args.passwords, args.input)
     except FileNotFoundError:
-        if not args.quiet:
-            print("ERROR - Input file not found")
+        quiet_print("ERROR - Input file not found", args.quiet)
         sys.exit(-2)
     except PermissionError:
-        if not args.quiet:
-            print("ERROR - Insufficient permissions for input file")
+        quiet_print("ERROR - Insufficient permissions for input file", args.quiet)
         sys.exit(-2)
     except KeyboardInterrupt:
+        quiet_print("", args.quiet)
         sys.exit(-2)
 
     fail = False
@@ -161,11 +164,10 @@ def main() -> None:
     for password in passwords:
         pwcount = procpw(password)
 
-        if not args.quiet:
-            if verbose:
-                print(f"{pwcount} {password}")
-            else:
-                print(pwcount)
+        if verbose:
+            quiet_print(f"{pwcount} {password}", args.quiet)
+        else:
+            quiet_print(pwcount, args.quiet)
 
         if pwcount > 0:
             fail = True
