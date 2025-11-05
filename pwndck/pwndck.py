@@ -162,7 +162,11 @@ def main() -> None:
     fail = False
     verbose = len(passwords) > 1
     for password in passwords:
-        pwcount = procpw(password)
+        try:
+            pwcount = procpw(password)
+        except PwndException as e:
+            quiet_print(str(e), args.quiet)
+            sys.exit(-2)
 
         if verbose:
             quiet_print(f"{pwcount} {password}", args.quiet)
