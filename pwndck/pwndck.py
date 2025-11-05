@@ -144,6 +144,7 @@ def quiet_print(string, quiet) -> None:
     if not quiet:
         print(string)
 
+
 def main() -> None:
     args = parse_args()
 
@@ -153,7 +154,9 @@ def main() -> None:
         quiet_print("ERROR - Input file not found", args.quiet)
         sys.exit(-2)
     except PermissionError:
-        quiet_print("ERROR - Insufficient permissions for input file", args.quiet)
+        quiet_print(
+            "ERROR - Insufficient permissions for input file", args.quiet
+        )
         sys.exit(-2)
     except KeyboardInterrupt:
         quiet_print("", args.quiet)
