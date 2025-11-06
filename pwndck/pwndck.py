@@ -11,6 +11,7 @@ import fileinput
 import hashlib
 import sys
 import textwrap
+import types
 from importlib.metadata import version
 from typing import List
 
@@ -129,10 +130,10 @@ def get_passwords(
         return passwords_arg
 
     if input_file:
-        return [
+        return (
             f.strip()
             for f in fileinput.input(files=(input_file,), encoding="utf-8")
-        ]
+        )
 
     if sys.stdin.isatty():
         return [input("Enter password to check: ")]
@@ -150,6 +151,22 @@ def main() -> None:
 
     try:
         passwords = get_passwords(args.passwords, args.input)
+
+        fail = False
+        verbose = (
+            isinstance(passwords, types.GeneratorType) or len(passwords) > 1
+        )
+        for password in passwords:
+            pwcount = procpw(password)
+
+            if verbose:
+                quiet_print(f"{pwcount} {password}", args.quiet)
+            else:
+                quiet_print(pwcount, args.quiet)
+
+            if pwcount > 0:
+                fail = True
+
     except FileNotFoundError:
         quiet_print("ERROR - Input file not found", args.quiet)
         sys.exit(-2)
@@ -161,23 +178,9 @@ def main() -> None:
     except KeyboardInterrupt:
         quiet_print("", args.quiet)
         sys.exit(-2)
-
-    fail = False
-    verbose = len(passwords) > 1
-    for password in passwords:
-        try:
-            pwcount = procpw(password)
-        except PwndException as e:
-            quiet_print(str(e), args.quiet)
-            sys.exit(-2)
-
-        if verbose:
-            quiet_print(f"{pwcount} {password}", args.quiet)
-        else:
-            quiet_print(pwcount, args.quiet)
-
-        if pwcount > 0:
-            fail = True
+    except PwndException as e:
+        quiet_print(str(e), args.quiet)
+        sys.exit(-2)
 
     if fail:
         sys.exit(-1)
