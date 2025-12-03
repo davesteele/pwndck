@@ -35,7 +35,7 @@ See https://haveibeenpwned.com/API/v3#PwnedPasswords
 :   Don't output text for successful runs, just return an error code.
 
 **-i**, **-\-input**
-:   File containing passwords, one per line ('-' for stdin)
+:   File containing passwords, one per line ('-' for stdin).
 
 ## COPYRIGHT
 
