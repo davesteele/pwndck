@@ -74,7 +74,7 @@ def parse_args():
             password database, and return the number of accounts for which
             they have been reported as compromised.
 
-            The number of entries found in the database is returned. if
+            The number of entries found in the database is returned. If
             multiple passwords are being checked, the password name is also
             returned.
 
