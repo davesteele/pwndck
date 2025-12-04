@@ -21,6 +21,8 @@ from pwndck import FlexiHelpFormatter
 
 apiurl = "https://api.pwnedpasswords.com/range/{}"
 
+__version__ = version("pwndck")
+
 
 class PwndException(Exception):
     pass
@@ -40,7 +42,7 @@ def get_hashes(key: str) -> str:
 
     url = apiurl.format(key)
     headers = {
-        "User-Agent": f"PwndCk/{version('pwndck')}",
+        "User-Agent": f"PwndCk/{__version__}",
         "Add-Padding": "true",
     }
     r = requests.get(url, headers=headers)
@@ -116,6 +118,12 @@ def parse_args():
         nargs="*",
         default=None,
         type=str,
+    )
+
+    group.add_argument(
+        "--version",
+        action="version",
+        version=f"%(prog)s {__version__}"
     )
 
     args = parser.parse_args()
