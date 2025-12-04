@@ -7,7 +7,9 @@ It uses the [haveibeenpwned API](https://haveibeenpwned.com/API/v3#PwnedPassword
 for the check:
   * This use does not require an API key. Anyone can run it.
   * This is more secure than the [web page tool](https://haveibeenpwned.com/Passwords).
-    your password is not exposed beyond your local machine.
+    your password is
+    [not exposed](https://blog.cloudflare.com/validating-leaked-passwords-with-k-anonymity/)
+    beyond your local machine.
   * It returns the number of times the password occurs in the database.
 
 # Install
