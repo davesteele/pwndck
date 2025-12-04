@@ -46,3 +46,4 @@ Install from [PyPi](https://pypi.org/project/pwndck/)
     in the database.
      
     See https://haveibeenpwned.com/API/v3#PwnedPasswords
+
