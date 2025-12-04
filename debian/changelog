@@ -1,3 +1,11 @@
+pwndck (0.3-1) unstable; urgency=medium
+
+  * Support processing of multiple passwords.
+  * Support a password input file.
+  * General cleanup.
+
+ -- David Steele <steele@debian.org>  Thu, 04 Dec 2025 18:07:00 -0500
+
 pwndck (0.2-3) unstable; urgency=medium
 
   * Failed dput.
