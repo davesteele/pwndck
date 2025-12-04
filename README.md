@@ -15,7 +15,7 @@ Install from [PyPi](https://pypi.org/project/pwndck/)
 
 # Usage
 
-    $ pwndck.py -h
+    $ pwndck -h
     usage: pwndck [-h] [-q] [-i [INPUT] | passwords ...]
     
     Report # of password hits in HaveIBeenPwned
@@ -26,19 +26,21 @@ Install from [PyPi](https://pypi.org/project/pwndck/)
     options:
       -h, --help           show this help message and exit
       -q, --quiet          Suppress output
-      -i, --input [INPUT]  File containing passwords, one per line ('-' for stdin)
+      -i, --input [INPUT]  File containing passwords, one per line
+                           ('-' for stdin)
     
-    Evaluate one or more passwords against the HaveIBeenPwned password database,
-    and return the number of accounts for which they have been reported as
-    compromised.
+    Evaluate one or more passwords against the HaveIBeenPwned
+    password database, and return the number of accounts for which
+    they have been reported as compromised.
      
-    The number of entries found in the database is returned. if multiple passwords
-    are being checked, the password name is also returned.
+    The number of entries found in the database is returned. if
+    multiple passwords are being checked, the password name is also
+    returned.
      
-    If the password is not specified on the command line, the user will be
-    prompted.
+    If the password is not specified on the command line, the user
+    will be prompted.
      
-    The command returns with an error code if the password is found in the
-    database.
+    The command returns with an error code if the password is found
+    in the database.
      
     See https://haveibeenpwned.com/API/v3#PwnedPasswords
