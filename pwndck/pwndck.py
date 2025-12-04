@@ -121,9 +121,7 @@ def parse_args():
     )
 
     group.add_argument(
-        "--version",
-        action="version",
-        version=f"%(prog)s {__version__}"
+        "--version", action="version", version=f"%(prog)s {__version__}"
     )
 
     args = parser.parse_args()
