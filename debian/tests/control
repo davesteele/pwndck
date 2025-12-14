@@ -1,0 +1,9 @@
+
+Test-Command: pytest -m "not webtest"
+Depends: @, @builddeps@
+Features: test-name=pytest-local
+
+Test-Command: pytest -m "webtest"
+Depends: @, @builddeps@
+Features: test-name=pytest-internet
+Restrictions: needs-internet

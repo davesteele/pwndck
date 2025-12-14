@@ -10,3 +10,6 @@ override_dh_auto_build:
 	dh_auto_build
 	pandoc debian/pwndck.1.md -s -t man -o debian/pwndck.1
 	sed -i 's/\\\[en\]/\\\-/' debian/pwndck.1
+
+override_dh_auto_test:
+	pytest -m "not webtest"

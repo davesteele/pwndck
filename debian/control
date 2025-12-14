@@ -9,11 +9,14 @@ Build-Depends:
     python3 (>= 3.9),
     python3-poetry,
     pandoc,
+    python3-pytest,
+    python3-pytest-mock,
 Standards-Version: 4.7.2
 Rules-Requires-Root: binary-targets
 Homepage: https://github.com/davesteele/pwndck
 Vcs-Git: https://github.com/davesteele/pwndck.git -b debian
 Vcs-Browser: https://github.com/davesteele/pwndck
+Testsuite: autopkgtest-pkg-python
 
 Package: pwndck
 Architecture: all
