@@ -1,9 +1,9 @@
-import pytest
 import textwrap
 
-import pwndck
-from pwndck.pwndck import get_sha, get_hashes, procpw
+import pytest
 
+import pwndck
+from pwndck.pwndck import get_hashes, get_sha, procpw
 
 foo_sha = "0BEEC7B5EA3F0FDBC95D0DD47F3C5BC275DA8A33"
 foo_key = "0BEEC"
