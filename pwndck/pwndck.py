@@ -144,7 +144,7 @@ def get_passwords(
     if sys.stdin.isatty():
         return [input("Enter password to check: ")]
 
-    return []
+    raise PwndException("No passwords")
 
 
 def quiet_print(string, quiet) -> None:
