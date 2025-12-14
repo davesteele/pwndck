@@ -12,7 +12,7 @@ import hashlib
 import sys
 import textwrap
 import types
-from importlib.metadata import version, PackageNotFoundError
+from importlib.metadata import PackageNotFoundError, version
 from typing import List
 
 import requests
