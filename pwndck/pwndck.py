@@ -13,7 +13,7 @@ import sys
 import textwrap
 import types
 from importlib.metadata import PackageNotFoundError, version
-from typing import List
+from typing import Iterable, List
 
 import requests
 
@@ -134,7 +134,7 @@ def parse_args():
 def get_passwords(
     passwords_arg: List[str],
     input_file: str,
-) -> List[str]:
+) -> Iterable[str]:
     if passwords_arg:
         return passwords_arg
 
@@ -162,8 +162,8 @@ def main() -> None:
         passwords = get_passwords(args.passwords, args.input)
 
         fail = False
-        verbose = (
-            isinstance(passwords, types.GeneratorType) or len(passwords) > 1
+        verbose = isinstance(passwords, types.GeneratorType) or (
+            isinstance(passwords, list) and len(passwords) > 1
         )
         for password in passwords:
             pwcount = procpw(password)
