@@ -3,7 +3,7 @@ import textwrap
 import pytest
 
 import pwndck
-from pwndck.pwndck import get_hashes, get_sha, procpw
+from pwndck.pwndck import get_hashes, get_sha, process_pw
 
 foo_sha = "0BEEC7B5EA3F0FDBC95D0DD47F3C5BC275DA8A33"
 foo_key = "0BEEC"
@@ -48,15 +48,15 @@ def requests_fixture(mocker):
         ("bar", 0),
     ],
 )
-def test_procpw_patched(pw, cnt, requests_fixture):
-    assert procpw(pw) == cnt
+def test_process_pw_patched(pw, cnt, requests_fixture):
+    assert process_pw(pw) == cnt
 
 
-def test_procpw_exception(requests_fixture):
+def test_process_pw_exception(requests_fixture):
     requests_fixture.status_code = 100
 
     with pytest.raises(pwndck.pwndck.PwndException):
-        procpw("foo")
+        process_pw("foo")
 
 
 @pytest.mark.webtest
@@ -67,5 +67,5 @@ def test_get_hashes():
 
 
 @pytest.mark.webtest
-def test_procpw():
-    assert procpw("foo") > 5000
+def test_process_pw():
+    assert process_pw("foo") > 5000

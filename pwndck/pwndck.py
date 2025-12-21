@@ -57,8 +57,20 @@ def get_hashes(key: str) -> str:
     return response
 
 
-def procpw(pw: str) -> int:
-    """Return # of times found in HIBP"""
+def process_pw(pw: str) -> int:
+    """
+    Returns the number of entries for a password in the Have I Been Pwned
+    database.
+
+    Parameters:
+        pw (str): The password to check.
+
+    Returns:
+        int: The number of entries in the database.
+
+    Raises:
+        PwndException: For web query errors.
+    """
     hsh = get_sha(pw)
     key = hsh[0:5]
     body = hsh[5:]
@@ -89,6 +101,9 @@ def parse_args():
 
             The command returns with an error
             code if a password is found in the database.
+
+            The process_pw() function is available for use in Python and can be
+            accessed by importing it from its respective module.
 
             See https://haveibeenpwned.com/API/v3#PwnedPasswords
             """
@@ -166,7 +181,7 @@ def main() -> None:
             isinstance(passwords, list) and len(passwords) > 1
         )
         for password in passwords:
-            pwcount = procpw(password)
+            pwcount = process_pw(password)
 
             if verbose:
                 quiet_print(f"{pwcount} {password}", args.quiet)
