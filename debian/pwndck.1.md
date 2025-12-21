@@ -1,43 +1,58 @@
-% pwndck(1)
-%
-% Oct 2025
+---
+date: December 2025
+section: 1
+title: PWNDCK
+---
 
 # NAME
 
-pwndck -- check passwords against the HaveIBeenPwned leak database
+pwndck - manual page for pwndck 0.4
 
-## SYNOPSIS
+# DESCRIPTION
 
-**pwndck** [**-h**] [**-q**] [**-i** [INPUT] | **password**...]
+usage: pwndck \[-h\] \[-q\] \[-i \[INPUT\]\] \[\--version\] \[passwords
+\...\]
 
-## DESCRIPTION
+Report \# of password hits in HaveIBeenPwned
 
-The **pwndck** utility evaluates a password against the HaveIBeenPwned password
-database, and returns the number of accounts for which it has been reported as
-compromised.
+## positional arguments:
 
-The number of entries found in the database is returned. if
-multiple passwords are being checked, the password name is also
-returned.
- 
-If the password is not specified on the command line, the user will be prompted.
- 
-The command returns with an error code if a password is found in the database.
- 
+passwords
+
+:   The password(s) to check
+
+## options:
+
+**-h**, **\--help**
+
+:   show this help message and exit
+
+**-q**, **\--quiet**
+
+:   suppress output
+
+**-i**, **\--input** \[INPUT\]
+
+:   file containing passwords, one per line (\'-\' for stdin)
+
+**\--version**
+
+:   show program\'s version number and exit
+
+Evaluate one or more passwords against the HaveIBeenPwned password
+database, and return the number of accounts for which they have been
+reported as compromised.
+
+The number of entries found in the database is returned. If multiple
+passwords are being checked, the password name is also returned.
+
+If the password is not specified on the command line, and there is no
+std input, the user will be prompted.
+
+The command returns with an error code if a password is found in the
+database.
+
+The process_pw() function is available for use in Python and can be
+accessed by importing it from its respective module.
+
 See https://haveibeenpwned.com/API/v3#PwnedPasswords
-
-## General Options
-
-**-h**, **-\-help**
-:   Display a friendly help message.
-
-**-q**, **-\-quiet**
-:   Don't output text for successful runs, just return an error code.
-
-**-i**, **-\-input**
-:   File containing passwords, one per line ('-' for stdin).
-
-## COPYRIGHT
-
-Comitup is Copyright (C) 2025 David Steele &lt;steele@debian.org&gt;
-
