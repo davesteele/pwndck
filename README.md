@@ -47,3 +47,12 @@ Install from [PyPi](https://pypi.org/project/pwndck/)
      
     See https://haveibeenpwned.com/API/v3#PwnedPasswords
 
+# Module
+
+    $ python3
+    Python 3.13.11 (main, Dec  8 2025, 11:43:54) [GCC 15.2.0] on linux
+    Type "help", "copyright", "credits" or "license" for more information.
+    >>> import pwndck
+    >>> pwndck.process_pw("password")
+    52256179
+    >>>
