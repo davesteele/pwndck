@@ -184,7 +184,7 @@ def main() -> None:
             pwcount = process_pw(password)
 
             if verbose:
-                quiet_print(f"{pwcount} {password}", args.quiet)
+                quiet_print(f"{pwcount:<8}  {password:}", args.quiet)
             else:
                 quiet_print(pwcount, args.quiet)
 
