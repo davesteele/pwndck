@@ -70,3 +70,7 @@ markers = [
 pythonpath = [
     ".",
 ]
+
+[tool.ruff]
+line-length = 79
+indent-width = 4
