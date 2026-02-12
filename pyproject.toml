@@ -10,7 +10,7 @@ build-backend = "poetry.core.masonry.api"
 
 [project]
 name = "pwndck"
-version = "0.4"
+version = "0.5"
 description = "Check for leaked passwords in HaveIBeenPwned."
 readme = "README.md"
 requires-python = ">=3.9"

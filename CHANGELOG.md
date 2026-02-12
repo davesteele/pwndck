@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4] - 2026-02-12
+- Rework API for module use
+- Align columns in verbose mode
+- Add devtest
+
 ## [0.4] - 2025-12-14
 - Add testing
 - Clean up copyrights
