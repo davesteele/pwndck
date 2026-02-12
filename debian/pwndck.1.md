@@ -1,12 +1,12 @@
 ---
-date: December 2025
+date: February 2026
 section: 1
 title: PWNDCK
 ---
 
 # NAME
 
-pwndck - manual page for pwndck 0.4
+pwndck - Check passwords against the HaveIBeenPwned leak database
 
 # DESCRIPTION
 
@@ -52,7 +52,7 @@ std input, the user will be prompted.
 The command returns with an error code if a password is found in the
 database.
 
-The process_pw() function is available for use in Python and can be
-accessed by importing it from its respective module.
+The process\_pw() function is available for use in Python. It can be
+accessed by importing it from the pwndck module.
 
 See https://haveibeenpwned.com/API/v3#PwnedPasswords
