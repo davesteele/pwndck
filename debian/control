@@ -6,7 +6,7 @@ Build-Depends:
     pybuild-plugin-pyproject,
     dh-python,
     python3 (>= 3.9),
-    python3-poetry,
+    python3-poetry-core,
     pandoc,
     python3-pytest,
     python3-pytest-mock,
