@@ -15,6 +15,14 @@ for the check:
 # Install
 Install from [PyPi](https://pypi.org/project/pwndck/)
 
+For Debian forky or newer, use
+
+    sudo apt install pwndck
+
+For other Debian derivatives, download the [deb file](https://deb.debian.org/debian/pool/main/p/pwndck/) and install with:
+
+    sudo dpkg -i pwndck_*_all.deb
+
 # Usage
 
     $ pwndck -h
