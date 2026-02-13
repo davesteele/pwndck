@@ -2,3 +2,4 @@ debian/pwndck.1
 .ruff_cache/
 .mypy_cache/
 .devenv/
+dist/
