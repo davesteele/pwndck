@@ -1,3 +1,4 @@
 Version: 5
-Source: https://github.com/davesteele/pwndck/tags
-Matching-Pattern: /davesteele/pwndck/archive/refs/tags/pwndck-(.*)\.tar\.gz
+Template: GitHub
+Owner: davesteele
+Project: pwndck
