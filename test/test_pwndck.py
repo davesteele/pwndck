@@ -3,7 +3,7 @@ import textwrap
 import pytest
 
 import pwndck
-from pwndck.pwndck import get_hashes, get_sha, process_pw
+from pwndck.pwndck import get_hashes, get_passwords, get_sha, process_pw
 
 foo_sha = "0BEEC7B5EA3F0FDBC95D0DD47F3C5BC275DA8A33"
 foo_key = "0BEEC"
@@ -69,3 +69,26 @@ def test_get_hashes():
 @pytest.mark.webtest
 def test_process_pw():
     assert process_pw("foo") > 5000
+
+
+def test_get_passwords_arg():
+    assert get_passwords(["foo", "bar"], "baz") == ["foo", "bar"]
+
+
+def test_get_passwords_input_file(monkeypatch):
+    monkeypatch.setattr("fileinput.input", lambda files, encoding: ["buzz"])
+    assert [x for x in get_passwords([], "baz")] == ["buzz"]
+
+
+def test_get_passwords_prompt(monkeypatch):
+    monkeypatch.setattr("sys.stdin.isatty", lambda: True)
+    monkeypatch.setattr("builtins.input", lambda prompt: "buzz")
+
+    assert get_passwords([], "") == ["buzz"]
+
+
+def test_get_passwrds_nope(monkeypatch):
+    monkeypatch.setattr("sys.stdin.isatty", lambda: False)
+
+    with pytest.raises(pwndck.pwndck.PwndException):
+        get_passwords([], "")
