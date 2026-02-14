@@ -10,8 +10,8 @@ pwndck - Check passwords against the HaveIBeenPwned leak database
 
 # DESCRIPTION
 
-usage: pwndck \[-h\] \[-q\] \[-i \[INPUT\]\] \[\--version\] \[passwords
-\...\]
+usage: pwndck \[-h\] \[-q\] \[\[-i \[INPUT\]\] \| \[passwords
+\...\] \| \[\--version\]\]
 
 Report \# of password hits in HaveIBeenPwned
 
