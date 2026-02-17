@@ -14,7 +14,7 @@ Standards-Version: 4.7.3
 Rules-Requires-Root: binary-targets
 Homepage: https://github.com/davesteele/pwndck
 Vcs-Git: https://github.com/davesteele/pwndck.git -b debian
-Vcs-Browser: https://github.com/davesteele/pwndck
+Vcs-Browser: https://github.com/davesteele/pwndck/tree/debian
 Testsuite: autopkgtest-pkg-python
 
 Package: pwndck
