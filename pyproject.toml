@@ -66,6 +66,7 @@ addopts = "--import-mode=importlib"
 testpaths = [ "pwndck", "test" ]
 markers = [
 	"webtest: tests requiring internet access",
+	"always_run: default config.py marker for universal tests",
 ]
 pythonpath = [
     ".",
