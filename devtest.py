@@ -16,6 +16,7 @@ The venv is persistent, and the tests run in parallel, so this is much quicker
 than tox or nox.
 """
 
+import shlex
 import subprocess
 import sys
 import textwrap
@@ -42,7 +43,7 @@ targets: str = "pwndck test devtest.py"
 
 
 def mkcmd(cmd: str) -> List[str]:
-    return [str(pythonpath), "-m"] + cmd.split()
+    return [str(pythonpath), "-m"] + shlex.split(cmd)
 
 
 def run(cmd: str) -> subprocess.CompletedProcess:
@@ -75,7 +76,7 @@ tests: List[str] = [
     "ruff format --check {}".format(targets),
     "ruff check --select I {}".format(targets),
     "ruff check {}".format(targets),
-    "pytest",
+    'pytest -m "webtest or always_run"',
 ]
 
 executor = ThreadPoolExecutor(max_workers=5)
