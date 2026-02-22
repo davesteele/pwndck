@@ -10,6 +10,7 @@ Build-Depends:
     pandoc,
     python3-pytest,
     python3-pytest-mock,
+    python3-requests,
 Standards-Version: 4.7.3
 Rules-Requires-Root: binary-targets
 Homepage: https://github.com/davesteele/pwndck
