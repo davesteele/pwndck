@@ -1,4 +1,10 @@
-pwndck (0.5.1-1) unstable; urgency=medium
+pwndck (0.5.1-2) unstable; urgency=medium
+
+  * Add requests to build depends, for testing.
+
+ -- David Steele <steele@debian.org>  Sun, 22 Feb 2026 15:37:32 -0500
+
+pwndck (0.5.1-1) UNRELEASED; urgency=medium
 
   * Clean up documentation.
   * Improve tests.
