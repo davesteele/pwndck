@@ -17,6 +17,9 @@ echo "The changelog base version is $DEBVER"
 VER=`cat $ROOT/pyproject.toml | grep "version =" | sed -e 's/\"//g' | awk '{print $NF}'`
 echo "The main  version is $VER"
 
+CHANGELOGVER=`cat CHANGELOG.md | grep ^## | grep "\." | head -1 | sed -e 's/^.\+\[//' | sed -e 's/\].\+$//'`
+echo "The main CHANGELOG.md version is $CHANGELOGVER"
+
 TAG=`git describe HEAD`
 echo "The tag reported by 'git describe' is $TAG"
 
@@ -37,6 +40,11 @@ fi
 
 if [ "$DEBVER" != "$VER" ] ; then
   echo "Debian and upstream versions don't match"
+  fail="1"
+fi
+
+if [ "$VER" != "$CHANGELOGVER" ] ; then
+  echo "CHANGELOG.md version doesn't match base version"
   fail="1"
 fi
 
