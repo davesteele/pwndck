@@ -13,6 +13,7 @@ import textwrap
 import types
 from typing import Iterable, List
 
+from pwndck.db_size import estimate_db, fmt_num
 from pwndck.flexi_formatter import FlexiHelpFormatter
 from pwndck.processpw import PwndException, process_pw
 from pwndck.version import __version__
@@ -74,6 +75,13 @@ def parse_args():
     )
 
     group.add_argument(
+        "-e",
+        "--estimatedb",
+        action="store_true",
+        help="Estimate the current size of the HaveIBeenPwnd password database",
+    )
+
+    group.add_argument(
         "--version", action="version", version=f"%(prog)s {__version__}"
     )
 
@@ -107,6 +115,14 @@ def quiet_print(string, quiet) -> None:
 
 def main() -> None:
     args = parse_args()
+
+    if args.estimatedb:
+        mean, stddev = estimate_db()
+        estimate = fmt_num(mean, 3)
+        print(
+            f"There are currently approximately {estimate} entries in the HaveIBeenPwned password database"
+        )
+        sys.exit(0)
 
     try:
         passwords = get_passwords(args.passwords, args.input)
