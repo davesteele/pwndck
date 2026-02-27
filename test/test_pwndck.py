@@ -3,7 +3,9 @@ import textwrap
 import pytest
 
 import pwndck
-from pwndck.pwndck import get_hashes, get_passwords, get_sha, process_pw
+import pwndck.processpw
+from pwndck.processpw import PwndException, get_hashes, get_sha, process_pw
+from pwndck.pwndck import get_passwords
 
 foo_sha = "0BEEC7B5EA3F0FDBC95D0DD47F3C5BC275DA8A33"
 foo_key = "0BEEC"
@@ -35,7 +37,7 @@ def requests_fixture(mocker):
     )
 
     mocker.patch.object(
-        pwndck.pwndck.requests, "get", return_value=response_mock
+        pwndck.processpw.requests, "get", return_value=response_mock
     )
 
     return response_mock
@@ -55,7 +57,7 @@ def test_process_pw_patched(pw, cnt, requests_fixture):
 def test_process_pw_exception(requests_fixture):
     requests_fixture.status_code = 100
 
-    with pytest.raises(pwndck.pwndck.PwndException):
+    with pytest.raises(PwndException):
         process_pw("foo")
 
 
@@ -90,5 +92,5 @@ def test_get_passwords_prompt(monkeypatch):
 def test_get_passwrds_nope(monkeypatch):
     monkeypatch.setattr("sys.stdin.isatty", lambda: False)
 
-    with pytest.raises(pwndck.pwndck.PwndException):
+    with pytest.raises(PwndException):
         get_passwords([], "")
