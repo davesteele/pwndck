@@ -38,6 +38,8 @@ For other Debian derivatives, download the [deb file](https://deb.debian.org/deb
       -q, --quiet          Suppress output
       -i, --input [INPUT]  File containing passwords, one per line
                            ('-' for stdin)
+      -e, --estimatedb     Estimate the current size of the HaveIBeenPwned
+                           password database
       --version            show program's version number and exit
     
     Evaluate one or more passwords against the HaveIBeenPwned
