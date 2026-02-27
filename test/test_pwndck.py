@@ -5,7 +5,7 @@ import pytest
 import pwndck
 import pwndck.processpw
 from pwndck.processpw import PwndException, get_hashes, get_sha, process_pw
-from pwndck.pwndck import get_passwords
+from pwndck.pwndckcli import get_passwords
 
 foo_sha = "0BEEC7B5EA3F0FDBC95D0DD47F3C5BC275DA8A33"
 foo_key = "0BEEC"
