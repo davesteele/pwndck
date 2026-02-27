@@ -16,7 +16,7 @@ from typing import Iterable, List
 
 import requests
 
-from pwndck import FlexiHelpFormatter
+from pwndck.flexi_formatter import FlexiHelpFormatter
 from pwndck.version import __version__
 
 apiurl = "https://api.pwnedpasswords.com/range/{}"
