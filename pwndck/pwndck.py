@@ -12,19 +12,14 @@ import hashlib
 import sys
 import textwrap
 import types
-from importlib.metadata import PackageNotFoundError, version
 from typing import Iterable, List
 
 import requests
 
 from pwndck import FlexiHelpFormatter
+from pwndck.version import __version__
 
 apiurl = "https://api.pwnedpasswords.com/range/{}"
-
-try:
-    __version__ = version("pwndck")
-except PackageNotFoundError:
-    __version__ = "?"
 
 
 class PwndException(Exception):
