@@ -32,11 +32,6 @@ pythonpath: str = str(envpath / "bin" / "python")
 pkgs: List[str] = [
     "pytest",
     "ruff",
-    "cachetools",
-    "flask",
-    "types-tabulate",
-    "types-Flask",
-    "types-cachetools",
 ]
 
 targets: str = "pwndck test devtest.py"
