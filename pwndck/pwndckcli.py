@@ -78,7 +78,7 @@ def parse_args():
         "-e",
         "--estimatedb",
         action="store_true",
-        help="Estimate the current size of the HaveIBeenPwnd password database",
+        help="estimate the current size of the HaveIBeenPwnd password database",
     )
 
     group.add_argument(
