@@ -35,6 +35,10 @@ passwords
 
 :   file containing passwords, one per line (\'-\' for stdin)
 
+**-e**, **\--estimatedb** \[INPUT\]
+
+:   estimate the current size of the HaveIBeenPwnd password database
+
 **\--version**
 
 :   show program\'s version number and exit
