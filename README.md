@@ -28,7 +28,7 @@ For other Debian derivatives, download the [deb file](https://deb.debian.org/deb
 # Usage
 
     $ pwndck -h
-    usage: pwndck [-h] [-q] [[-i [INPUT]] | [passwords ...] | [--version]]
+    usage: pwndck [-q] [ [password]... | -i INPUT | --version | -h | -e ]
     
     Report # of password hits in HaveIBeenPwned
     

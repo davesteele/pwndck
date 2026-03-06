@@ -32,8 +32,8 @@ def parse_args():
             multiple passwords are being checked, the password name is also
             returned.
 
-            If the password is not specified on the command line, and there
-            is no std input, the user will be prompted.
+            If the password is not specified on the command line, the user will
+            be prompted.
 
             The command returns with an error
             code if a password is found in the database.
@@ -71,6 +71,7 @@ def parse_args():
         help="The password(s) to check",
         nargs="*",
         default=None,
+        metavar="password",
         type=str,
     )
 
