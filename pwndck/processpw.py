@@ -52,7 +52,7 @@ def process_pw(pw: str) -> int:
         PwndException: For web query errors.
     """
     hsh = get_sha(pw)
-    key = hsh[0:5]
+    key = hsh[:5]
     body = hsh[5:]
 
     for line in get_hashes(key).splitlines():
