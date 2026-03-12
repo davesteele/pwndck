@@ -24,6 +24,7 @@ For Debian forky or newer, use
 For other Debian derivatives, download the [deb file](https://deb.debian.org/debian/pool/main/p/pwndck/) and install with:
 
     sudo dpkg -i pwndck_*_all.deb
+    sudo apt -f install
 
 # Usage
 
