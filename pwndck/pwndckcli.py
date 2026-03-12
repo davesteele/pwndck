@@ -109,29 +109,34 @@ def get_passwords(
     raise PwndException("No passwords")
 
 
-def quiet_print(string, quiet) -> None:
+def quiet_print(string: str, quiet: bool = False) -> None:
     if not quiet:
         print(string)
 
 
-def main() -> None:
-    args = parse_args()
+def use_verbose(passwords: Iterable[str]) -> bool:
+    verbose = isinstance(passwords, types.GeneratorType) or (
+        isinstance(passwords, list) and len(passwords) > 1
+    )
+    return verbose
+
+
+def main(args: argparse.Namespace) -> int:
+
+    return_val = 0
 
     if args.estimatedb:
         mean, stddev = estimate_db()
         estimate = fmt_num(mean, 3)
-        print(
+        quiet_print(
             f"There are currently approximately {estimate} entries in the HaveIBeenPwned password database"
         )
-        sys.exit(0)
 
-    try:
+    else:
         passwords = get_passwords(args.passwords, args.input)
 
-        fail = False
-        verbose = isinstance(passwords, types.GeneratorType) or (
-            isinstance(passwords, list) and len(passwords) > 1
-        )
+        verbose = use_verbose(passwords)
+
         for password in passwords:
             pwcount = process_pw(password)
 
@@ -141,7 +146,16 @@ def main() -> None:
                 quiet_print(pwcount, args.quiet)
 
             if pwcount > 0:
-                fail = True
+                return_val = -1
+
+    return return_val
+
+
+def main_wrap():
+    try:
+        args = parse_args()
+        error_code: int = main(args)
+        sys.exit(error_code)
 
     except FileNotFoundError:
         quiet_print("ERROR - Input file not found", args.quiet)
@@ -158,9 +172,6 @@ def main() -> None:
         quiet_print(str(e), args.quiet)
         sys.exit(-2)
 
-    if fail:
-        sys.exit(-1)
-
 
 if __name__ == "__main__":
-    main()
+    main_wrap()
