@@ -67,6 +67,22 @@ For other Debian derivatives, download the [deb file](https://deb.debian.org/deb
     Python 3.13.11 (main, Dec  8 2025, 11:43:54) [GCC 15.2.0] on linux
     Type "help", "copyright", "credits" or "license" for more information.
     >>> import pwndck
+    >>> help(pwndck.processpw)
+    Help on function process_pw in module pwndck.processpw:
+
+    process_pw(pw: str) -> int
+        Returns the number of entries for a password in the Have I Been Pwned
+        database.
+
+        Parameters:
+            pw (str): The password to check.
+
+        Returns:
+            int: The number of entries in the database.
+
+        Raises:
+            PwndException: For web query errors.
+
     >>> pwndck.process_pw("password")
     52256179
     >>>
