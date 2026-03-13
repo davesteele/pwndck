@@ -1,7 +1,7 @@
 import pytest
 
 from pwndck.processpw import PwndException
-from pwndck.pwndckcli import get_passwords
+from pwndck.pwndckcli import get_passwords, use_verbose
 
 
 def test_get_passwords_arg():
@@ -25,3 +25,16 @@ def test_get_passwrds_nope(monkeypatch):
 
     with pytest.raises(PwndException):
         get_passwords([], "")
+
+
+@pytest.mark.parametrize(
+    "passwords, result",
+    [
+        ((x for x in []), True),
+        ((x for x in ["one"]), True),
+        ([x for x in ["one"]], False),
+        ((x for x in ["one", "two"]), True),
+    ],
+)
+def test_use_verbose(passwords, result):
+    assert use_verbose(passwords) == result
