@@ -3,11 +3,11 @@ Upstream-Name: pwndck
 Source: https://github.com/davesteele/pwndck
 
 Files: *
-Copyright: 2025 David Steele <steele@debian.org>
+Copyright: 2026 David Steele <steele@debian.org>
 License: GPL-2+
 
 Files: debian/*
-Copyright: 2025 David Steele <steele@debian.org>
+Copyright: 2026 David Steele <steele@debian.org>
 License: GPL-2+
 
 License: GPL-2+
