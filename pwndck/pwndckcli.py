@@ -152,21 +152,19 @@ def main(args: argparse.Namespace) -> int:
 
 
 def main_wrap():
+    errmsg = {
+        FileNotFoundError: "ERROR - Input file not found",
+        PermissionError: "ERROR - Insufficient permissions for input file",
+        KeyboardInterrupt: "",
+    }
+
     try:
         args = parse_args()
         error_code: int = main(args)
         sys.exit(error_code)
 
-    except FileNotFoundError:
-        quiet_print("ERROR - Input file not found", args.quiet)
-        sys.exit(-2)
-    except PermissionError:
-        quiet_print(
-            "ERROR - Insufficient permissions for input file", args.quiet
-        )
-        sys.exit(-2)
-    except KeyboardInterrupt:
-        quiet_print("", args.quiet)
+    except (FileNotFoundError, PermissionError, KeyboardInterrupt) as e:
+        quiet_print(errmsg[type(e)], args.quiet)
         sys.exit(-2)
     except PwndException as e:
         quiet_print(str(e), args.quiet)
