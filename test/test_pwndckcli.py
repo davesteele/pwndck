@@ -1,5 +1,5 @@
 import sys
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 
 import pytest
 
@@ -50,6 +50,7 @@ def test_use_verbose(passwords, result):
         (FileNotFoundError, "found"),
         (PermissionError, "permission"),
         (KeyboardInterrupt, ""),
+        (PwndException, ""),
     ],
 )
 def test_main_wrap_exceptions(monkeypatch, capsys, egception, substring):
@@ -61,3 +62,36 @@ def test_main_wrap_exceptions(monkeypatch, capsys, egception, substring):
         captured = capsys.readouterr()
 
         assert substring in captured.out
+
+
+def test_main_estimate_db(monkeypatch, capsys):
+    args = Mock()
+    args.estimatedb = True
+
+    monkeypatch.setattr("pwndck.pwndckcli.estimate_db", lambda: (10, 1))
+
+    assert pwndck.pwndckcli.main(args) == 0
+
+    captured = capsys.readouterr()
+
+    assert "10" in captured.out
+
+
+@pytest.mark.parametrize(
+    "verbose",
+    [
+        False,
+        True,
+    ],
+)
+def test_main_process_pw(verbose, capsys, monkeypatch):
+    args = Mock()
+    args.estimatedb = False
+    args.passwords = ["one"]
+    if verbose:
+        args.passwords += ["two"]
+    args.input = ""
+
+    monkeypatch.setattr("pwndck.pwndckcli.process_pw", lambda x: 10)
+
+    assert pwndck.pwndckcli.main(args) == -1
