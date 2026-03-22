@@ -158,18 +158,18 @@ def main_wrap():
         KeyboardInterrupt: "",
     }
 
-    try:
-        args = parse_args()
-        error_code: int = main(args)
-        sys.exit(error_code)
+    args = parse_args()
 
-    except (FileNotFoundError, PermissionError, KeyboardInterrupt) as e:
-        quiet_print(errmsg[type(e)], args.quiet)
-        sys.exit(-2)
+    try:
+        error_code: int = main(args)
     except PwndException as e:
         quiet_print(str(e), args.quiet)
-        sys.exit(-2)
+        error_code = -2
+    except Exception as e:
+        quiet_print(errmsg[type(e)], args.quiet)
+        error_code = -2
 
+    sys.exit(error_code)
 
 if __name__ == "__main__":
     main_wrap()
