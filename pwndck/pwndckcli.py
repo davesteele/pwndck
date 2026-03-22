@@ -165,7 +165,7 @@ def main_wrap():
     except PwndException as e:
         quiet_print(str(e), args.quiet)
         error_code = -2
-    except Exception as e:
+    except tuple(errmsg.keys()) as e:
         quiet_print(errmsg[type(e)], args.quiet)
         error_code = -2
 
