@@ -1,0 +1,11 @@
+#!/bin/bash
+
+targets="pwndck test devtest.py"
+
+virtualenv ./.devenv
+
+./.devenv/bin/python -m pip install ruff pytest requests pytest-mock
+
+./.devenv/bin/ruff format $targets
+./.devenv/bin/ruff check --select I --fix $targets
+./.devenv/bin/ruff check --fix $targets
