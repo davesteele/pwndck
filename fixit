@@ -1,11 +1,15 @@
 #!/bin/bash
 
-targets="pwndck test devtest.py"
+SCRIPT_DIR=$(dirname "$0")
 
-virtualenv ./.devenv
+TARGETS=""
+for target in "pwndck" "test" "devtest.py" ; do
+	TARGETS+="$SCRIPT_DIR/$target ";
+done
 
-./.devenv/bin/python -m pip install ruff pytest requests pytest-mock
+virtualenv $SCRIPT_DIR/.devenv
+$SCRIPT_DIR/.devenv/bin/python -m pip install ruff pytest requests pytest-mock
 
-./.devenv/bin/ruff format $targets
-./.devenv/bin/ruff check --select I --fix $targets
-./.devenv/bin/ruff check --fix $targets
+$SCRIPT_DIR/.devenv/bin/ruff format $TARGETS
+$SCRIPT_DIR/.devenv/bin/ruff check --select I --fix $TARGETS
+$SCRIPT_DIR/.devenv/bin/ruff check --fix $TARGETS
