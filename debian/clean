@@ -3,3 +3,5 @@ debian/pwndck.1
 .mypy_cache/
 .devenv/
 dist/
+.pytest_cache
+.coverage
