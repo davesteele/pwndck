@@ -61,7 +61,7 @@ def parse_args():
         "-i",
         "--input",
         type=str,
-        nargs="?",
+        action="store",
         default=None,
         help="file containing passwords, one per line ('-' for stdin)",
     )

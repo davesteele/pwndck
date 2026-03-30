@@ -39,7 +39,7 @@ For other Debian derivatives, download the [deb file](https://deb.debian.org/deb
     options:
       -h, --help           show this help message and exit
       -q, --quiet          Suppress output
-      -i, --input [INPUT]  File containing passwords, one per line
+      -i, --input INPUT    File containing passwords, one per line
                            ('-' for stdin)
       -e, --estimatedb     Estimate the current size of the HaveIBeenPwned
                            password database
