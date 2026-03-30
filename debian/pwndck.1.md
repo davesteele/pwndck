@@ -31,7 +31,7 @@ passwords
 
 :   suppress output
 
-**-i**, **\--input** \[INPUT\]
+**-i**, **\--input** INPUT
 
 :   file containing passwords, one per line (\'-\' for stdin)
 
