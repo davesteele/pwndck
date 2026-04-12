@@ -60,7 +60,7 @@ fi
 
 found="0"
 for tag in `git tag --merged debian` ; do
-  if [ "$tag" = "pwndck-$DEBVER" ] ; then
+  if [ "$tag" = "v$DEBVER" ] ; then
     found="1"
   fi
 done
