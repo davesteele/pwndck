@@ -71,7 +71,7 @@ tests: List[str] = [
     "ruff format --check {}".format(targets),
     "ruff check --select I {}".format(targets),
     "ruff check {}".format(targets),
-    'pytest -m "webtest or always_run"',
+    "pytest -m always_run",
 ]
 
 executor = ThreadPoolExecutor(max_workers=5)

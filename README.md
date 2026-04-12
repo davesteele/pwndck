@@ -5,12 +5,14 @@ has been compromised.
 
 It uses the [haveibeenpwned API](https://haveibeenpwned.com/API/v3#PwnedPasswords)
 for the check:
-  * This use does not require an API key. Anyone can run it.
-  * This is more secure than the [web page tool](https://haveibeenpwned.com/Passwords).
+  * Use does not require an API key. Anyone can run it.
+  * It is more secure than the [web page tool](https://haveibeenpwned.com/Passwords).
     your password is
     [not exposed](https://blog.cloudflare.com/validating-leaked-passwords-with-k-anonymity/)
     beyond your local machine.
-  * It returns the number of times the password occurs in the database.
+  * This is a lightweight install. There are no large downloads.
+
+It returns the number of times the password occurs in the database.
 
 # Install
 Install from [PyPi](https://pypi.org/project/pwndck/)
@@ -22,11 +24,12 @@ For Debian forky or newer, use
 For other Debian derivatives, download the [deb file](https://deb.debian.org/debian/pool/main/p/pwndck/) and install with:
 
     sudo dpkg -i pwndck_*_all.deb
+    sudo apt -f install
 
 # Usage
 
     $ pwndck -h
-    usage: pwndck [-h] [-q] [[-i [INPUT]] | [passwords ...] | [--version]]
+    usage: pwndck [-q] [ [password]... | -i INPUT | --version | -h | -e ]
     
     Report # of password hits in HaveIBeenPwned
     
@@ -36,7 +39,7 @@ For other Debian derivatives, download the [deb file](https://deb.debian.org/deb
     options:
       -h, --help           show this help message and exit
       -q, --quiet          Suppress output
-      -i, --input [INPUT]  File containing passwords, one per line
+      -i, --input INPUT    File containing passwords, one per line
                            ('-' for stdin)
       -e, --estimatedb     Estimate the current size of the HaveIBeenPwned
                            password database
@@ -64,6 +67,22 @@ For other Debian derivatives, download the [deb file](https://deb.debian.org/deb
     Python 3.13.11 (main, Dec  8 2025, 11:43:54) [GCC 15.2.0] on linux
     Type "help", "copyright", "credits" or "license" for more information.
     >>> import pwndck
+    >>> help(pwndck.processpw)
+    Help on function process_pw in module pwndck.processpw:
+
+    process_pw(pw: str) -> int
+        Returns the number of entries for a password in the Have I Been Pwned
+        database.
+
+        Parameters:
+            pw (str): The password to check.
+
+        Returns:
+            int: The number of entries in the database.
+
+        Raises:
+            PwndException: For web query errors.
+
     >>> pwndck.process_pw("password")
     52256179
     >>>
