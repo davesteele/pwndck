@@ -9,23 +9,18 @@ title: PWNDCK
 pwndck - Check passwords against the HaveIBeenPwned leak database
 
 # DESCRIPTION
-
-usage: pwndck \[-h\] \[-q\] \[\[-i \[INPUT\]\] \| \[passwords
-\...\] \| \[\--version\]\]
+ 
+usage: pwndck \[-q\] \[ \[password \...\] \| -i INPUT \| -e \| \--version \| -h \]
 
 Report \# of password hits in HaveIBeenPwned
 
 ## positional arguments:
 
-passwords
+password
 
 :   The password(s) to check
 
 ## options:
-
-**-h**, **\--help**
-
-:   show this help message and exit
 
 **-q**, **\--quiet**
 
@@ -35,13 +30,17 @@ passwords
 
 :   file containing passwords, one per line (\'-\' for stdin)
 
-**-e**, **\--estimatedb** \[INPUT\]
+**-e**, **\--estimatedb**
 
 :   estimate the current size of the HaveIBeenPwnd password database
 
 **\--version**
 
 :   show program\'s version number and exit
+
+**-h**, **\--help**
+
+:   show this help message and exit
 
 Evaluate one or more passwords against the HaveIBeenPwned password
 database, and return the number of accounts for which they have been
