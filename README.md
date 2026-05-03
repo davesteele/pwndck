@@ -29,7 +29,7 @@ For other Debian derivatives, download the [deb file](https://deb.debian.org/deb
 # Usage
 
     $ pwndck -h
-    usage: pwndck [-q] [ [password]... | -i INPUT | --version | -h | -e ]
+    usage: pwndck [-q] [ [<password>...] | -i <INPUT> | -e | --version | -h ]
     
     Report # of password hits in HaveIBeenPwned
     
@@ -37,13 +37,13 @@ For other Debian derivatives, download the [deb file](https://deb.debian.org/deb
       passwords            The password(s) to check
     
     options:
-      -h, --help           show this help message and exit
       -q, --quiet          Suppress output
       -i, --input INPUT    File containing passwords, one per line
                            ('-' for stdin)
       -e, --estimatedb     Estimate the current size of the HaveIBeenPwned
                            password database
       --version            show program's version number and exit
+      -h, --help           show this help message and exit
     
     Evaluate one or more passwords against the HaveIBeenPwned
     password database, and return the number of accounts for which
