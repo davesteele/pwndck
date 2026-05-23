@@ -15,7 +15,7 @@ for the check:
 It returns the number of times the password occurs in the database.
 
 # Install
-Install from [PyPi](https://pypi.org/project/pwndck/)
+Install from [PyPI](https://pypi.org/project/pwndck/)
 
 For Debian forky or newer, use
 
