@@ -4,6 +4,7 @@ allowed_markers = ("webtest",)
 def pytest_collection_modifyitems(items, config):
     # add `always_run` marker to all unmarked items
     for item in items:
+        item.add_marker("all")
         if not any(x.name in allowed_markers for x in item.iter_markers()):
             item.add_marker("always_run")
 
