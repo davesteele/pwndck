@@ -1,3 +1,10 @@
+pwndck (0.6.1-1) UNRELEASED; urgency=medium
+
+  * Cleanup/refactoring
+  * Documentation clarification
+
+ -- David Steele <steele@debian.org>  Wed, 03 Jun 2026 13:35:26 -0400
+
 pwndck (0.6-1) unstable; urgency=medium
 
   * Added a HIBP password database size estimator
