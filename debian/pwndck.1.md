@@ -10,7 +10,7 @@ pwndck - Check passwords against the HaveIBeenPwned leak database
 
 # DESCRIPTION
  
-usage: pwndck \[-q\] \[ \[password \...\] \| -i INPUT \| -e \| \--version \| -h \]
+usage: pwndck \[-q\] \[ \[\<password\> \...\] \| -i \<INPUT\> \| -e \| \--version \| -h \]
 
 Report \# of password hits in HaveIBeenPwned
 
@@ -26,7 +26,7 @@ password
 
 :   suppress output
 
-**-i**, **\--input** INPUT
+**-i**, **\--input** \<INPUT\>
 
 :   file containing passwords, one per line (\'-\' for stdin)
 
