@@ -67,7 +67,7 @@ For other Debian derivatives, download the [deb file](https://deb.debian.org/deb
     Python 3.13.11 (main, Dec  8 2025, 11:43:54) [GCC 15.2.0] on linux
     Type "help", "copyright", "credits" or "license" for more information.
     >>> import pwndck
-    >>> help(pwndck.processpw)
+    >>> help(pwndck.process_pw)
     Help on function process_pw in module pwndck.processpw:
 
     process_pw(pw: str) -> int
