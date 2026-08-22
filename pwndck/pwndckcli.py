@@ -11,7 +11,7 @@ import fileinput
 import sys
 import textwrap
 import types
-from typing import Iterable, List
+from collections.abc import Iterable
 
 from pwndck.db_size import estimate_db, fmt_num
 from pwndck.flexi_formatter import FlexiHelpFormatter
@@ -91,7 +91,7 @@ def parse_args():
 
 
 def get_passwords(
-    passwords_arg: List[str],
+    passwords_arg: list[str],
     input_file: str,
 ) -> Iterable[str]:
     if passwords_arg:
@@ -126,7 +126,7 @@ def main(args: argparse.Namespace) -> int:
     return_val = 0
 
     if args.estimatedb:
-        mean, stddev = estimate_db()
+        mean, _stddev = estimate_db()
         estimate = fmt_num(mean, 3)
         quiet_print(
             f"There are currently approximately {estimate} entries in the HaveIBeenPwned password database"
