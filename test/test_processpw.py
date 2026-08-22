@@ -69,3 +69,10 @@ def test_get_hashes():
 @pytest.mark.webtest
 def test_process_pw():
     assert process_pw("foo") > 5000
+
+
+@pytest.mark.webtest
+def test_hash_padding():
+    hash_list = get_hashes(foo_key)
+
+    assert any([x[-2:] == ":0" for x in hash_list.splitlines()])
