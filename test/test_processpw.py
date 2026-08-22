@@ -75,4 +75,4 @@ def test_process_pw():
 def test_hash_padding():
     hash_list = get_hashes(foo_key)
 
-    assert any([x[-2:] == ":0" for x in hash_list.splitlines()])
+    assert any(x[-2:] == ":0" for x in hash_list.splitlines())

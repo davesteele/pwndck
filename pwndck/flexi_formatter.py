@@ -46,7 +46,7 @@ class FlexiHelpFormatter(RawTextHelpFormatter):
         text = _re.sub("\n\n[\n]+", "\n\n", text)
 
         last_sub_indent = None
-        paragraphs = list()
+        paragraphs = []
         for line in text.splitlines():
             (indent, sub_indent) = self._indents(line)
             is_text = _re.search(r"[^\s]", line) is not None
@@ -68,7 +68,7 @@ class FlexiHelpFormatter(RawTextHelpFormatter):
 
         import textwrap
 
-        paragraphs = list()
+        paragraphs = []
         for paragraph in self._split_paragraphs(text):
             (indent, sub_indent) = self._indents(paragraph)
 
