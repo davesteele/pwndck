@@ -61,7 +61,6 @@ line-length = 79
 profile = "black"
 
 [tool.pytest.ini_options]
-addopts = "--import-mode=importlib"
 testpaths = [ "test" ]
 pythonpath = [ "src" ]
 markers = [
