@@ -3,7 +3,7 @@
 SCRIPT_DIR=$(dirname "$0")
 
 TARGETS=""
-for target in "pwndck" "test" "devtest.py" ; do
+for target in "src/pwndck" "test" "devtest.py" ; do
 	TARGETS+="$SCRIPT_DIR/$target ";
 done
 
