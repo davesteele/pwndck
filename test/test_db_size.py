@@ -4,6 +4,7 @@ import textwrap
 import pytest
 
 from pwndck.db_size import (
+    estimate_db,
     fmt_num,
     get_line_count,
     get_pw_count,
@@ -50,3 +51,17 @@ def test_sig_figs():
 
 def test_fmt_num():
     assert fmt_num(12345, 2) == "12,000"
+
+
+def test_estimate_deb(monkeypatch):
+    testdata = textwrap.dedent(
+        """
+        73A05C0ED0176787A4F1574FF0075F7521E:4
+        F27D4201DB9B28483BA83C48EBAFBB2AA17:5
+        DUMMY201DB9B28483BA83C48EBAFBB2AA17:0
+        """
+    ).strip()
+
+    monkeypatch.setattr("pwndck.db_size.get_hashes", lambda x: testdata)
+
+    assert estimate_db(10) == (2 * 2**20, 0)
