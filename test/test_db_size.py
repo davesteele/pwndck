@@ -1,5 +1,6 @@
 import re
 import textwrap
+from unittest.mock import MagicMock
 
 import pytest
 
@@ -62,6 +63,9 @@ def test_estimate_deb(monkeypatch):
         """
     ).strip()
 
-    monkeypatch.setattr("pwndck.db_size.get_hashes", lambda x: testdata)
+    mock_func = MagicMock(return_value=testdata)
+
+    monkeypatch.setattr("pwndck.db_size.get_hashes", mock_func)
 
     assert estimate_db(10) == (2 * 2**20, 0)
+    assert mock_func.call_count == 10
