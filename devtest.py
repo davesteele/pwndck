@@ -33,7 +33,7 @@ pkgs: list[str] = [
     "ruff",
 ]
 
-targets: str = "pwndck test devtest.py"
+targets: str = "src/pwndck test devtest.py"
 
 
 def mkcmd(cmd: str) -> list[str]:
@@ -64,7 +64,7 @@ if not envpath.exists():
     print("# Installing packages")
 
     for pkg in pkgs:
-        cp = run("pip install " + pkg)
+        cp = run("pip install --upgrade " + pkg)
         print("Running", " ".join(cp.args))
         print(cp.stdout.decode())
 
