@@ -54,12 +54,6 @@ packages = [
     {include = "pwndck", from = "src"},
 ]
 
-[tool.black]
-line-length = 79
-
-[tool.isort]
-profile = "black"
-
 [tool.pytest.ini_options]
 testpaths = [ "test" ]
 pythonpath = [ "src" ]
