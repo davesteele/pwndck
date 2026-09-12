@@ -46,12 +46,28 @@ def test_get_line_count():
     assert get_line_count(testdata) == 2
 
 
-def test_sig_figs():
-    assert sig_figs(12345, 2) == 12000
+num_fmt_cases = [
+    (12345, 1, 10000, "10,000"),
+    (12345, 2, 12000, "12,000"),
+    (12345, 3, 12300, "12,300"),
+    (12345, 4, 12340, "12,340"),
+    (12345, 5, 12345, "12,345"),
+    (395, 5, 395, "395"),
+    (395, 1, 400, "400"),
+    (350, 1, 400, "400"),
+    (349, 1, 300, "300"),
+    (395, 0, 0, "0"),
+]
 
 
-def test_fmt_num():
-    assert fmt_num(12345, 2) == "12,000"
+@pytest.mark.parametrize("num, digits, result, resultstr", num_fmt_cases)
+def test_sig_figs(num, digits, result, resultstr):
+    assert sig_figs(num, digits) == result
+
+
+@pytest.mark.parametrize("num, digits, result, resultstr", num_fmt_cases)
+def test_fmt_num(num, digits, result, resultstr):
+    assert fmt_num(num, digits) == resultstr
 
 
 def test_estimate_deb(monkeypatch):
