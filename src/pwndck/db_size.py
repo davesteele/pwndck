@@ -16,7 +16,7 @@ def get_pw_count(db_line: str) -> int:
 
 
 def get_line_count(hash_response: str) -> int:
-    return len([x for x in hash_response.splitlines() if get_pw_count(x) > 0])
+    return sum(1 for x in hash_response.splitlines() if get_pw_count(x) > 0)
 
 
 def estimate_db(samples: int = 10):
