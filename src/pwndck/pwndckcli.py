@@ -19,30 +19,36 @@ from pwndck.processpw import PwndException, process_pw
 from pwndck.version import __version__
 
 
+def _(strng):
+    return strng
+
+
 def parse_args():
     parser = argparse.ArgumentParser(
-        description="Report # of password hits in HaveIBeenPwned",
+        description=_("Report # of password hits in HaveIBeenPwned"),
         epilog=textwrap.dedent(
-            """
-            Evaluate one or more passwords against the HaveIBeenPwned
-            password database, and return the number of accounts for which
-            they have been reported as compromised.
+            _(
+                """
+                Evaluate one or more passwords against the HaveIBeenPwned
+                password database, and return the number of accounts for which
+                they have been reported as compromised.
 
-            The number of entries found in the database is returned. If
-            multiple passwords are being checked, the password name is also
-            returned.
+                The number of entries found in the database is returned. If
+                multiple passwords are being checked, the password name is also
+                returned.
 
-            If the password is not specified on the command line, the user will
-            be prompted.
+                If the password is not specified on the command line, the user
+                will be prompted.
 
-            The command returns with an error
-            code if a password is found in the database.
+                The command returns with an error code if a password is found
+                in the database.
 
-            The process_pw() function is available for use in Python and can be
-            accessed by importing it from its respective module.
+                The process_pw() function is available for use in Python and
+                can be accessed by importing it from the pwndck module.
 
-            See https://haveibeenpwned.com/API/v3#PwnedPasswords
-            """
+                See {}
+                """
+            ).format(PWNDURL)
         ),
         formatter_class=FlexiHelpFormatter,
     )
@@ -50,7 +56,7 @@ def parse_args():
     parser.add_argument(
         "-q",
         "--quiet",
-        help="suppress output",
+        help=_("suppress output"),
         default=False,
         action="store_true",
     )
@@ -63,12 +69,12 @@ def parse_args():
         type=str,
         action="store",
         default=None,
-        help="file containing passwords, one per line ('-' for stdin)",
+        help=_("file containing passwords, one per line ('-' for stdin)"),
     )
 
     group.add_argument(
         "passwords",
-        help="The password(s) to check",
+        help=_("The password(s) to check"),
         nargs="*",
         default=None,
         metavar="password",
@@ -79,7 +85,9 @@ def parse_args():
         "-e",
         "--estimatedb",
         action="store_true",
-        help="estimate the current size of the HaveIBeenPwnd password database",
+        help=_(
+            "estimate the current size of the HaveIBeenPwnd password database"
+        ),
     )
 
     group.add_argument(
@@ -104,9 +112,9 @@ def get_passwords(
         )
 
     if sys.stdin.isatty():
-        return [input("Enter password to check: ")]
+        return [input(_("Enter password to check: "))]
 
-    raise PwndException("No passwords")
+    raise PwndException(_("No passwords"))
 
 
 def quiet_print(string: str, quiet: bool = False) -> None:
@@ -129,7 +137,9 @@ def main(args: argparse.Namespace) -> int:
         mean, _stddev = estimate_db()
         estimate = fmt_num(mean, 3)
         quiet_print(
-            f"There are currently approximately {estimate} entries in the HaveIBeenPwned password database"
+            _(
+                "There are currently approximately {} entries in the HaveIBeenPwned password database"
+            ).format(estimate)
         )
 
     else:
@@ -153,8 +163,8 @@ def main(args: argparse.Namespace) -> int:
 
 def main_wrap():
     errmsg = {
-        FileNotFoundError: "ERROR - Input file not found",
-        PermissionError: "ERROR - Insufficient permissions for input file",
+        FileNotFoundError: _("ERROR - Input file not found"),
+        PermissionError: _("ERROR - Insufficient permissions for input file"),
         KeyboardInterrupt: "",
     }
 
