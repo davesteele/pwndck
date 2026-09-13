@@ -25,8 +25,13 @@ locale_dir = Path(__file__).resolve().parent.parent / "locales"
 lang = gettext.translation("pwndck", localedir=locale_dir, fallback=True)
 lang.install()
 
+_("Project-Id-Version: 1\n")
+
 
 def parse_args():
+
+    PWNDURL = "https://haveibeenpwned.com/API/v3#PwnedPasswords"
+
     parser = argparse.ArgumentParser(
         description=_("Report # of password hits in HaveIBeenPwned"),
         epilog=textwrap.dedent(
