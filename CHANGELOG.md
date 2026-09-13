@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Additional/improved testing.
 - Convert source to a Python /src layout.
 - Code cleanup.
+- Add LOCALE support.
 
 ## [0.6.2] - 2026-06-03
 - Fix main entry point

@@ -8,10 +8,12 @@
 
 import argparse
 import fileinput
+import gettext
 import sys
 import textwrap
 import types
 from collections.abc import Iterable
+from pathlib import Path
 
 from pwndck.db_size import estimate_db, fmt_num
 from pwndck.flexi_formatter import FlexiHelpFormatter
@@ -19,9 +21,10 @@ from pwndck.processpw import PwndException, process_pw
 from pwndck.quiet_print import Q
 from pwndck.version import __version__
 
+locale_dir = Path(__file__).resolve().parent.parent / "locales"
 
-def _(strng):
-    return strng
+lang = gettext.translation("pwndck", localedir=locale_dir, fallback=True)
+lang.install()
 
 
 def parse_args():
