@@ -20,12 +20,10 @@ from pwndck.flexi_formatter import FlexiHelpFormatter
 from pwndck.processpw import PwndException, process_pw
 from pwndck.version import __version__
 
-locale_dir = Path(__file__).resolve().parent.parent / "locales"
+locale_dir = Path(__file__).resolve().parent.parent.parent / "locales"
 
 lang = gettext.translation("pwndck", localedir=locale_dir, fallback=True)
 _ = lang.gettext
-
-_("Project-Id-Version: 1\n")
 
 
 def parse_args():
