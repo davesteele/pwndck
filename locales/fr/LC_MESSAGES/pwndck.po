@@ -1,0 +1,109 @@
+# French translations for pwndck package.
+# Copyright (C) 2026 THE pwndck'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the pwndck package.
+# David Steele <dsteele@gmail.com>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: pwndck 0.6.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-14 16:21-0400\n"
+"PO-Revision-Date: 2026-09-14 16:22-0400\n"
+"Last-Translator: David Steele <dsteele@gmail.com>\n"
+"Language-Team: French <traduc@traduc.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+
+#: /home/daves/github/pwndck/src/pwndck/pwndckcli.py:34
+msgid "Report # of password hits in HaveIBeenPwned"
+msgstr "Rapport # des occurrences de mots de passe dans HaveIBeenPwned"
+
+#: /home/daves/github/pwndck/src/pwndck/pwndckcli.py:37
+#, python-brace-format
+msgid ""
+"\n"
+"                Evaluate one or more passwords against the HaveIBeenPwned\n"
+"                password database, and return the number of accounts for which\n"
+"                they have been reported as compromised.\n"
+"\n"
+"                The number of entries found in the database is returned. If\n"
+"                multiple passwords are being checked, the password name is also\n"
+"                returned.\n"
+"\n"
+"                If the password is not specified on the command line, the user\n"
+"                will be prompted.\n"
+"\n"
+"                The command returns with an error code if a password is found\n"
+"                in the database.\n"
+"\n"
+"                The process_pw() function is available for use in Python and\n"
+"                can be accessed by importing it from the pwndck module.\n"
+"\n"
+"                See {}\n"
+"                "
+msgstr ""
+"\n"
+"                Évaluer un ou plusieurs mots de passe par rapport à la base de\n"
+"                données de mots de passe HaveIBeenPwned, et retourner le nombre\n"
+"                de comptes pour lesquels ils ont été signalés comme compromis.\n"
+"\n"
+"                Le nombre d'entrées trouvées dans la base de données est retourné. Si\n"
+"                plusieurs mots de passe sont vérifiés, le nom du mot de passe est\n"
+"                également retourné.\n"
+"\n"
+"                Si le mot de passe n'est pas spécifié sur la ligne de commande, l'utilisateur\n"
+"                sera invité.\n"
+"\n"
+"                La commande retourne un code d'erreur si un mot de passe est trouvé\n"
+"                dans la base de données.\n"
+"\n"
+"                La fonction process_pw() est disponible pour une utilisation en Python et\n"
+"                peut être accessible en l'importing depuis le module pwndck.\n"
+"\n"
+"                Voir {}\n"
+"                "
+
+#: /home/daves/github/pwndck/src/pwndck/pwndckcli.py:65
+msgid "suppress output"
+msgstr "supprimer la sortie"
+
+#: /home/daves/github/pwndck/src/pwndck/pwndckcli.py:78
+msgid "file containing passwords, one per line ('-' for stdin)"
+msgstr "fichier contenant des mots de passe, un par ligne ('-' pour stdin)"
+
+#: /home/daves/github/pwndck/src/pwndck/pwndckcli.py:83
+msgid "The password(s) to check"
+msgstr "Le(s) mot(s) de passe à vérifier"
+
+#: /home/daves/github/pwndck/src/pwndck/pwndckcli.py:95
+msgid "estimate the current size of the HaveIBeenPwnd password database"
+msgstr ""
+"estimer la taille actuelle de la base de données de mots de passe "
+"HaveIBeenPwnd"
+
+#: /home/daves/github/pwndck/src/pwndck/pwndckcli.py:121
+msgid "Enter password to check: "
+msgstr "Entrez le mot de passe à vérifier :"
+
+#: /home/daves/github/pwndck/src/pwndck/pwndckcli.py:123
+msgid "No passwords"
+msgstr "Aucun mot de passe"
+
+#: /home/daves/github/pwndck/src/pwndck/pwndckcli.py:147
+#, python-brace-format
+msgid "There are currently approximately {} entries in the HaveIBeenPwned password database"
+msgstr ""
+"Il y a actuellement environ {} entrées dans la base de données de mots "
+"de passe HaveIBeenPwned"
+
+#: /home/daves/github/pwndck/src/pwndck/pwndckcli.py:172
+msgid "ERROR - Input file not found"
+msgstr "ERREUR - Fichier d'entrée non trouvé"
+
+#: /home/daves/github/pwndck/src/pwndck/pwndckcli.py:173
+msgid "ERROR - Insufficient permissions for input file"
+msgstr "ERREUR - Permissions insuffisantes pour le fichier d'entrée"
