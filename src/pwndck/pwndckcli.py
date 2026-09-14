@@ -23,7 +23,7 @@ from pwndck.version import __version__
 locale_dir = Path(__file__).resolve().parent.parent / "locales"
 
 lang = gettext.translation("pwndck", localedir=locale_dir, fallback=True)
-lang.install()
+_ = lang.gettext
 
 _("Project-Id-Version: 1\n")
 
