@@ -12,3 +12,8 @@ SRCDIR=$(realpath "$PROJDIR/src/$PROJ")
 
 touch "$LOCALEDIR/$PROJ.pot"
 find "$SRCDIR" -name "*.py" | xgettext -f - --no-wrap --package-name "$PROJ" --package-version "$VER" -o "$LOCALEDIR/$PROJ.pot"
+
+for PO in `ls "$LOCALEDIR"/*/LC_MESSAGES/*.po`; do
+    PODIR=$(dirname "$PO")
+    msgfmt "$PO" -o "$PODIR/$PROJ.mo"
+done
