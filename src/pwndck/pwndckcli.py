@@ -26,6 +26,15 @@ lang = gettext.translation("pwndck", localedir=locale_dir, fallback=True)
 _ = lang.gettext
 
 
+def update_lang(lang: str) -> None:
+    global _
+
+    translation = gettext.translation(
+        "pwndck", localedir=locale_dir, languages=[lang], fallback=True
+    )
+    _ = translation.gettext
+
+
 def parse_args():
 
     PWNDURL = "https://haveibeenpwned.com/API/v3#PwnedPasswords"
@@ -97,7 +106,10 @@ def parse_args():
     )
 
     group.add_argument(
-        "--version", action="version", version=f"%(prog)s {__version__}"
+        "--version",
+        action="version",
+        version=f"%(prog)s {__version__}",
+        help=_("show program's version number and exit"),
     )
 
     args = parser.parse_args()

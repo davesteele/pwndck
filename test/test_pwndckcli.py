@@ -45,16 +45,23 @@ def test_use_verbose(passwords, result):
 
 
 @pytest.mark.parametrize(
-    "egception, substring",
+    "egception, lang, substring",
     [
-        (FileNotFoundError, "found"),
-        (PermissionError, "permission"),
-        (KeyboardInterrupt, ""),
-        (PwndException, ""),
+        (FileNotFoundError, "en", "found"),
+        (FileNotFoundError, "fr", "trouvé"),
+        (PermissionError, "en", "permission"),
+        (PermissionError, "fr", "Permissions"),
+        (KeyboardInterrupt, "", ""),
+        (KeyboardInterrupt, "en", ""),
+        (KeyboardInterrupt, "fr", ""),
+        (PwndException, "en", ""),
     ],
 )
-def test_main_wrap_exceptions(monkeypatch, capsys, egception, substring):
+def test_main_wrap_exceptions(monkeypatch, capsys, egception, lang, substring):
     monkeypatch.setattr(sys, "exit", lambda x: -2)
+
+    if lang:
+        pwndck.pwndckcli.update_lang(lang)
 
     with patch("pwndck.pwndckcli.main", side_effect=egception()):
         pwndck.pwndckcli.main_wrap()
