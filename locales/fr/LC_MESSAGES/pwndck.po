@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pwndck 0.6.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-14 16:21-0400\n"
+"POT-Creation-Date: 2026-09-16 00:22-0400\n"
 "PO-Revision-Date: 2026-09-14 16:22-0400\n"
 "Last-Translator: David Steele <dsteele@gmail.com>\n"
 "Language-Team: French <traduc@traduc.org>\n"
@@ -17,12 +17,11 @@ msgstr ""
 "Content-Transfer-Encoding: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-
-#: /home/daves/github/pwndck/src/pwndck/pwndckcli.py:34
+#: /home/daves/github/pwndck/src/pwndck/pwndckcli.py:43
 msgid "Report # of password hits in HaveIBeenPwned"
 msgstr "Rapport # des occurrences de mots de passe dans HaveIBeenPwned"
 
-#: /home/daves/github/pwndck/src/pwndck/pwndckcli.py:37
+#: /home/daves/github/pwndck/src/pwndck/pwndckcli.py:46
 #, python-brace-format
 msgid ""
 "\n"
@@ -67,43 +66,43 @@ msgstr ""
 "                Voir {}\n"
 "                "
 
-#: /home/daves/github/pwndck/src/pwndck/pwndckcli.py:65
+#: /home/daves/github/pwndck/src/pwndck/pwndckcli.py:74
 msgid "suppress output"
 msgstr "supprimer la sortie"
 
-#: /home/daves/github/pwndck/src/pwndck/pwndckcli.py:78
+#: /home/daves/github/pwndck/src/pwndck/pwndckcli.py:87
 msgid "file containing passwords, one per line ('-' for stdin)"
 msgstr "fichier contenant des mots de passe, un par ligne ('-' pour stdin)"
 
-#: /home/daves/github/pwndck/src/pwndck/pwndckcli.py:83
+#: /home/daves/github/pwndck/src/pwndck/pwndckcli.py:92
 msgid "The password(s) to check"
 msgstr "Le(s) mot(s) de passe à vérifier"
 
-#: /home/daves/github/pwndck/src/pwndck/pwndckcli.py:95
+#: /home/daves/github/pwndck/src/pwndck/pwndckcli.py:104
 msgid "estimate the current size of the HaveIBeenPwnd password database"
-msgstr ""
-"estimer la taille actuelle de la base de données de mots de passe "
-"HaveIBeenPwnd"
+msgstr "estimer la taille actuelle de la base de données de mots de passe HaveIBeenPwnd"
 
-#: /home/daves/github/pwndck/src/pwndck/pwndckcli.py:121
+#: /home/daves/github/pwndck/src/pwndck/pwndckcli.py:112
+msgid "show program's version number and exit"
+msgstr "afficher le numéro de version du programme et quitter"
+
+#: /home/daves/github/pwndck/src/pwndck/pwndckcli.py:133
 msgid "Enter password to check: "
 msgstr "Entrez le mot de passe à vérifier :"
 
-#: /home/daves/github/pwndck/src/pwndck/pwndckcli.py:123
+#: /home/daves/github/pwndck/src/pwndck/pwndckcli.py:135
 msgid "No passwords"
 msgstr "Aucun mot de passe"
 
-#: /home/daves/github/pwndck/src/pwndck/pwndckcli.py:147
+#: /home/daves/github/pwndck/src/pwndck/pwndckcli.py:159
 #, python-brace-format
 msgid "There are currently approximately {} entries in the HaveIBeenPwned password database"
-msgstr ""
-"Il y a actuellement environ {} entrées dans la base de données de mots "
-"de passe HaveIBeenPwned"
+msgstr "Il y a actuellement environ {} entrées dans la base de données de mots de passe HaveIBeenPwned"
 
-#: /home/daves/github/pwndck/src/pwndck/pwndckcli.py:172
+#: /home/daves/github/pwndck/src/pwndck/pwndckcli.py:184
 msgid "ERROR - Input file not found"
 msgstr "ERREUR - Fichier d'entrée non trouvé"
 
-#: /home/daves/github/pwndck/src/pwndck/pwndckcli.py:173
+#: /home/daves/github/pwndck/src/pwndck/pwndckcli.py:185
 msgid "ERROR - Insufficient permissions for input file"
 msgstr "ERREUR - Permissions insuffisantes pour le fichier d'entrée"
