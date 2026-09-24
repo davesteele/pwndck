@@ -121,7 +121,7 @@ def use_verbose(passwords: Iterable[str]) -> bool:
     return verbose
 
 
-def main(args: argparse.Namespace) -> int:
+def run_cli(args: argparse.Namespace) -> int:
 
     return_val = 0
 
@@ -151,7 +151,7 @@ def main(args: argparse.Namespace) -> int:
     return return_val
 
 
-def main_wrap():
+def main():
     errmsg = {
         FileNotFoundError: "ERROR - Input file not found",
         PermissionError: "ERROR - Insufficient permissions for input file",
@@ -161,7 +161,7 @@ def main_wrap():
     args = parse_args()
 
     try:
-        error_code: int = main(args)
+        error_code: int = run_cli(args)
     except PwndException as e:
         quiet_print(str(e), args.quiet)
         error_code = -2
@@ -173,4 +173,4 @@ def main_wrap():
 
 
 if __name__ == "__main__":
-    main_wrap()
+    main()

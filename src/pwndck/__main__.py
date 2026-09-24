@@ -1,3 +1,3 @@
-from pwndck import main_wrap
+from pwndck import main
 
-main_wrap()
+main()
