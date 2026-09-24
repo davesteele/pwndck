@@ -53,24 +53,24 @@ def test_use_verbose(passwords, result):
         (PwndException, ""),
     ],
 )
-def test_main_wrap_exceptions(monkeypatch, capsys, egception, substring):
+def test_run_cli_wrap_exceptions(monkeypatch, capsys, egception, substring):
     monkeypatch.setattr(sys, "exit", lambda x: -2)
 
-    with patch("pwndck.pwndckcli.main", side_effect=egception()):
-        pwndck.pwndckcli.main_wrap()
+    with patch("pwndck.pwndckcli.run_cli", side_effect=egception()):
+        pwndck.pwndckcli.main()
 
         captured = capsys.readouterr()
 
         assert substring in captured.out
 
 
-def test_main_estimate_db(monkeypatch, capsys):
+def test_run_cli_estimate_db(monkeypatch, capsys):
     args = Mock()
     args.estimatedb = True
 
     monkeypatch.setattr("pwndck.pwndckcli.estimate_db", lambda: (10, 1))
 
-    assert pwndck.pwndckcli.main(args) == 0
+    assert pwndck.pwndckcli.run_cli(args) == 0
 
     captured = capsys.readouterr()
 
@@ -84,7 +84,7 @@ def test_main_estimate_db(monkeypatch, capsys):
         True,
     ],
 )
-def test_main_process_pw(verbose, capsys, monkeypatch):
+def test_run_cli_process_pw(verbose, capsys, monkeypatch):
     args = Mock()
     args.estimatedb = False
     args.passwords = ["one"]
@@ -94,4 +94,4 @@ def test_main_process_pw(verbose, capsys, monkeypatch):
 
     monkeypatch.setattr("pwndck.pwndckcli.process_pw", lambda x: 10)
 
-    assert pwndck.pwndckcli.main(args) == -1
+    assert pwndck.pwndckcli.run_cli(args) == -1

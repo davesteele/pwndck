@@ -46,7 +46,7 @@ Issues = "https://github.com/davesteele/pwndck/issues"
 Changelog = "https://github.com/davesteele/pwndck/blob/main/CHANGELOG.md"
 
 [project.scripts]
-pwndck = "pwndck.pwndckcli:main_wrap"
+pwndck = "pwndck.pwndckcli:main"
 
 [tool.poetry]
 package-mode = true
