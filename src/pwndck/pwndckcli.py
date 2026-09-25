@@ -16,6 +16,7 @@ from collections.abc import Iterable
 from pwndck.db_size import estimate_db, fmt_num
 from pwndck.flexi_formatter import FlexiHelpFormatter
 from pwndck.processpw import PwndException, process_pw
+from pwndck.quiet_print import Q
 from pwndck.version import __version__
 
 
@@ -109,11 +110,6 @@ def get_passwords(
     raise PwndException("No passwords")
 
 
-def quiet_print(string: str, quiet: bool = False) -> None:
-    if not quiet:
-        print(string)
-
-
 def use_verbose(passwords: Iterable[str]) -> bool:
     verbose = isinstance(passwords, types.GeneratorType) or (
         isinstance(passwords, list) and len(passwords) > 1
@@ -128,7 +124,7 @@ def run_cli(args: argparse.Namespace) -> int:
     if args.estimatedb:
         mean, _stddev = estimate_db()
         estimate = fmt_num(mean, 3)
-        quiet_print(
+        Q.print(
             f"There are currently approximately {estimate} entries in the HaveIBeenPwned password database"
         )
 
@@ -141,9 +137,9 @@ def run_cli(args: argparse.Namespace) -> int:
             pwcount = process_pw(password)
 
             if verbose:
-                quiet_print(f"{pwcount:<8}  {password:}", args.quiet)
+                Q.print(f"{pwcount:<8}  {password:}")
             else:
-                quiet_print(pwcount, args.quiet)
+                Q.print(pwcount)
 
             if pwcount > 0:
                 return_val = -1
@@ -160,13 +156,15 @@ def main():
 
     args = parse_args()
 
+    Q.set_quiet(args.quiet)
+
     try:
         error_code: int = run_cli(args)
     except PwndException as e:
-        quiet_print(str(e), args.quiet)
+        Q.print(str(e))
         error_code = -2
     except tuple(errmsg.keys()) as e:
-        quiet_print(errmsg[type(e)], args.quiet)
+        Q.print(errmsg[type(e)])
         error_code = -2
 
     sys.exit(error_code)
