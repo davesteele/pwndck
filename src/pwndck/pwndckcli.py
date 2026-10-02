@@ -9,6 +9,7 @@
 import argparse
 import fileinput
 import gettext
+import inspect
 import sys
 import textwrap
 import types
@@ -21,19 +22,19 @@ from pwndck.processpw import PwndException, process_pw
 from pwndck.quiet_print import Q
 from pwndck.version import __version__
 
-locale_dir = Path(__file__).resolve().parent.parent.parent / "locales"
 
-lang = gettext.translation("pwndck", localedir=locale_dir, fallback=True)
+def locale_dir():
+    import pwndck
+
+    module_path = Path(inspect.getfile(pwndck))
+
+    locale_dir = module_path.resolve().parent.parent.parent / "locales"
+
+    return locale_dir
+
+
+lang = gettext.translation("pwndck", localedir=locale_dir(), fallback=True)
 _ = lang.gettext
-
-
-def update_lang(lang: str) -> None:
-    global _
-
-    translation = gettext.translation(
-        "pwndck", localedir=locale_dir, languages=[lang], fallback=True
-    )
-    _ = translation.gettext
 
 
 def parse_args():

@@ -1,3 +1,4 @@
+import gettext
 import sys
 from unittest.mock import Mock, patch
 
@@ -50,9 +51,11 @@ def test_use_verbose(passwords, result):
         (FileNotFoundError, "en", "found"),
         (FileNotFoundError, "fr", "trouvé"),
         (PermissionError, "en", "permission"),
+        (PermissionError, "xy", "permission"),
         (PermissionError, "fr", "Permissions"),
         (KeyboardInterrupt, "", ""),
         (KeyboardInterrupt, "en", ""),
+        (KeyboardInterrupt, "xy", ""),
         (KeyboardInterrupt, "fr", ""),
         (PwndException, "en", ""),
     ],
@@ -60,8 +63,14 @@ def test_use_verbose(passwords, result):
 def test_main_wrap_exceptions(monkeypatch, capsys, egception, lang, substring):
     monkeypatch.setattr(sys, "exit", lambda x: -2)
 
-    if lang:
-        pwndck.pwndckcli.update_lang(lang)
+    if lang and lang != "en":
+        translation = gettext.translation(
+            "pwndck",
+            localedir=pwndck.pwndckcli.locale_dir(),
+            languages=[lang],
+            fallback=True,
+        )
+        monkeypatch.setattr("pwndck.pwndckcli._", translation.gettext)
 
     with patch("pwndck.pwndckcli.run_cli", side_effect=egception()):
         pwndck.pwndckcli.main()
