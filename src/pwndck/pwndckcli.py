@@ -30,6 +30,9 @@ def locale_dir():
 
     locale_dir = module_path.resolve().parent.parent.parent / "locales"
 
+    if not locale_dir.exists():
+        locale_dir = Path("/usr/share/locale")
+
     return locale_dir
 
 
