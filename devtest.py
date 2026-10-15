@@ -23,27 +23,29 @@ import textwrap
 import venv
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
-from typing import List
 
 envpath: Path = Path(__file__).resolve().parent / ".devenv"
 pythonpath: str = str(envpath / "bin" / "python")
 
 
-pkgs: List[str] = [
+pkgs: list[str] = [
     "pytest",
     "ruff",
 ]
 
-targets: str = "pwndck test devtest.py"
+targets: str = "src/pwndck test devtest.py"
 
 
-def mkcmd(cmd: str) -> List[str]:
+def mkcmd(cmd: str) -> list[str]:
     return [str(pythonpath), "-m"] + shlex.split(cmd)
 
 
 def run(cmd: str) -> subprocess.CompletedProcess:
     cp = subprocess.run(
-        mkcmd(cmd), stdout=subprocess.PIPE, stderr=subprocess.STDOUT
+        mkcmd(cmd),
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        check=False,
     )
 
     return cp
@@ -62,15 +64,15 @@ if not envpath.exists():
     print("# Installing packages")
 
     for pkg in pkgs:
-        cp = run("pip install " + pkg)
+        cp = run("pip install --upgrade " + pkg)
         print("Running", " ".join(cp.args))
         print(cp.stdout.decode())
 
 
-tests: List[str] = [
-    "ruff format --check {}".format(targets),
-    "ruff check --select I {}".format(targets),
-    "ruff check {}".format(targets),
+tests: list[str] = [
+    f"ruff format --check {targets}",
+    f"ruff check --select I {targets}",
+    f"ruff check {targets}",
     "pytest -m always_run",
 ]
 

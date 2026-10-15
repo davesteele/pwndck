@@ -46,30 +46,21 @@ Issues = "https://github.com/davesteele/pwndck/issues"
 Changelog = "https://github.com/davesteele/pwndck/blob/main/CHANGELOG.md"
 
 [project.scripts]
-pwndck = "pwndck.pwndckcli:main_wrap"
+pwndck = "pwndck.pwndckcli:main"
 
 [tool.poetry]
 package-mode = true
 packages = [
-    {include = "pwndck"},
+    {include = "pwndck", from = "src"},
 ]
 
-[tool.black]
-line-length = 79
-
-[tool.isort]
-profile = "black"
-
 [tool.pytest.ini_options]
-addopts = "--import-mode=importlib"
-testpaths = [ "pwndck", "test" ]
+testpaths = [ "test" ]
+pythonpath = [ "src" ]
 markers = [
 	"webtest: tests requiring internet access",
 	"always_run: default config.py marker for universal tests",
 	"all: marker on every test",
-]
-pythonpath = [
-    ".",
 ]
 
 [tool.ruff]
