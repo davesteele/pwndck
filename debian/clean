@@ -5,3 +5,4 @@ debian/pwndck.1
 dist/
 .pytest_cache/
 .coverage/
+locales/pwndck.pot
