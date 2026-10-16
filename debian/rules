@@ -27,6 +27,6 @@ override_dh_install:
 	dh_install
 	for lang in $(LLANGS) ; do\
 	    mkdir -p debian/pwndck/usr/share/locale/$$lang/LC_MESSAGES; \
-	    install locales/$$lang/LC_MESSAGES/pwndck.mo \
+	    install -m 0644 locales/$$lang/LC_MESSAGES/pwndck.mo \
 	            debian/pwndck/usr/share/locale/$$lang/LC_MESSAGES/pwndck.mo; \
 	done

@@ -1,3 +1,11 @@
+pwndck (1.0-1) unstable; urgency=medium
+
+  * Add internationalization, and a French translation.
+  * Additional/improved testing.
+  * Convert to Python /src layout.
+
+ -- David Steele <steele@debian.org>  Thu, 15 Oct 2026 22:26:33 -0400
+
 pwndck (0.6.2-1) unstable; urgency=medium
 
   * Cleanup/refactoring.
