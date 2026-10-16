@@ -1,9 +1,9 @@
 
-Test-Command: pytest -m "not webtest"
+Test-Command: for py in `py3versions -s`; do $py -m pytest -m always_run; done
 Depends: @, @builddeps@
 Features: test-name=pytest-local
 
-Test-Command: pytest -m "webtest"
+Test-Command: for py in `py3versions -s`; do $py -m pytest -m webtest; done
 Depends: @, @builddeps@
 Features: test-name=pytest-internet
 Restrictions: needs-internet
