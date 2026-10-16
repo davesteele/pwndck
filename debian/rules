@@ -4,6 +4,8 @@ export PYBUILD_NAME=pwndck
 
 LLANGS = $(shell (ls locales | grep -E '^..$$'))
 
+manpages = $(shell (ls debian/*.md | sed 's/\([0-9]\).md/\1/'))
+
 %:
 	dh $@ --with python3 --buildsystem=pybuild
 
@@ -12,13 +14,16 @@ override_dh_auto_clean:
 	for lang in $(LLANGS) ; do\
 	    rm -f "locales/$$lang/LC_MESSAGES/pwndck.mo"; \
 	done
+	rm -f debian/*.[1-8]
 	./debian/release_check || echo "\nRELEASE CHECK FAILURE\n"
 
 override_dh_auto_build:
 	dh_auto_build
 	./scripts/makemo.sh
-	pandoc debian/pwndck.1.md -s -t man -o debian/pwndck.1
-	sed -i 's/\\\[en\]/\\\-/' debian/pwndck.1
+	for mn in ${manpages}; do \
+	  pandoc $$mn.md -s -t man -o $$mn; \
+	  sed -i 's/\\\[en\]/\\\-/' $$mn; \
+	done
 
 override_dh_auto_test:
 	pytest -m "not webtest"
@@ -30,3 +35,4 @@ override_dh_install:
 	    install -m 0644 locales/$$lang/LC_MESSAGES/pwndck.mo \
 	            debian/pwndck/usr/share/locale/$$lang/LC_MESSAGES/pwndck.mo; \
 	done
+	dh_installman debian/*.[1-8]
