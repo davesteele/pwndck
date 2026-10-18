@@ -45,6 +45,7 @@ def test_use_verbose(passwords, result):
     assert use_verbose(passwords) == result
 
 
+@pytest.mark.translations
 @pytest.mark.parametrize(
     "egception, lang, substring",
     [

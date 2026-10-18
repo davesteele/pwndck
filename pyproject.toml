@@ -10,7 +10,7 @@ build-backend = "poetry.core.masonry.api"
 
 [project]
 name = "pwndck"
-version = "1.0"
+version = "1.1"
 description = "Check for leaked passwords in HaveIBeenPwned."
 readme = "README.md"
 requires-python = ">=3.9"
@@ -59,7 +59,8 @@ testpaths = [ "test" ]
 pythonpath = [ "src" ]
 markers = [
 	"webtest: tests requiring internet access",
-	"always_run: default config.py marker for universal tests",
+	"translations: verify mo file interactions - requires rw build tree",
+	"always_run: all the other tests",
 	"all: marker on every test",
 ]
 
