@@ -1,4 +1,4 @@
-allowed_markers = ("webtest",)
+allowed_markers = ("webtest", "translations")
 
 
 def pytest_collection_modifyitems(items, config):

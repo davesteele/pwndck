@@ -59,7 +59,8 @@ testpaths = [ "test" ]
 pythonpath = [ "src" ]
 markers = [
 	"webtest: tests requiring internet access",
-	"always_run: default config.py marker for universal tests",
+	"translations: verify mo file interactions - requires rw build tree",
+	"always_run: all the other tests",
 	"all: marker on every test",
 ]
 
