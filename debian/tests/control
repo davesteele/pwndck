@@ -3,6 +3,11 @@ Test-Command: for py in `py3versions -s`; do $py -m pytest -m always_run; done
 Depends: @, @builddeps@
 Features: test-name=pytest-local
 
+Test-Command: ./scripts/makemo.sh; for py in `py3versions -s`; do $py -m pytest -m translations; done
+Depends: @, @builddeps@
+Features: test-name=pytest-translations
+Restrictions: rw-build-tree
+
 Test-Command: for py in `py3versions -s`; do $py -m pytest -m webtest; done
 Depends: @, @builddeps@
 Features: test-name=pytest-internet
