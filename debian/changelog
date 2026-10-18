@@ -1,3 +1,9 @@
+pwndck (1.1-1) unstable; urgency=medium
+
+  * Test fixes/improvements.
+
+ -- David Steele <steele@debian.org>  Sun, 18 Oct 2026 20:48:25 -0400
+
 pwndck (1.0-1) unstable; urgency=medium
 
   * Add internationalization, and a French translation.
