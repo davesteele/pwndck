@@ -12,9 +12,8 @@ class PwndException(Exception):
 
 
 def get_sha(data: str) -> str:
-    hlib = hashlib.sha1()
-    hlib.update(data.encode("utf-8"))
-    hsh = hlib.hexdigest()
+
+    hsh = hashlib.sha1(data.encode("utf-8")).hexdigest()
 
     return hsh.upper()
 
