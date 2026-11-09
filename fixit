@@ -8,7 +8,7 @@ for target in "src/pwndck" "test" "devtest.py" ; do
 done
 
 virtualenv $SCRIPT_DIR/.devenv
-$SCRIPT_DIR/.devenv/bin/python -m pip install ruff pytest requests pytest-mock
+$SCRIPT_DIR/.devenv/bin/python -m pip install ruff
 
 $SCRIPT_DIR/.devenv/bin/ruff format $TARGETS
 $SCRIPT_DIR/.devenv/bin/ruff check --select I --fix $TARGETS
