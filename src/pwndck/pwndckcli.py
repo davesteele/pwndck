@@ -9,7 +9,6 @@
 import argparse
 import fileinput
 import gettext
-import inspect
 import sys
 import textwrap
 import types
@@ -24,11 +23,9 @@ from pwndck.version import __version__
 
 
 def locale_dir():
-    import pwndck
+    module_path = Path(__file__).resolve()
 
-    module_path = Path(inspect.getfile(pwndck))
-
-    locale_dir = module_path.resolve().parents[2] / "locales"
+    locale_dir = module_path.parents[2] / "locales"
 
     if not locale_dir.exists():
         locale_dir = Path("/usr/share/locale")
