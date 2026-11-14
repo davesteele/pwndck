@@ -28,7 +28,7 @@ def locale_dir():
 
     module_path = Path(inspect.getfile(pwndck))
 
-    locale_dir = module_path.resolve().parent.parent.parent / "locales"
+    locale_dir = module_path.resolve().parents[2] / "locales"
 
     if not locale_dir.exists():
         locale_dir = Path("/usr/share/locale")
