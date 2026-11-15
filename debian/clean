@@ -4,4 +4,4 @@
 dist/
 .pytest_cache/
 .coverage/
-locales/pwndck.pot
+locale/pwndck.pot

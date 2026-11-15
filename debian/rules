@@ -2,7 +2,7 @@
 
 export PYBUILD_NAME=pwndck
 
-LLANGS = $(shell (ls locales | grep -E '^..$$'))
+LLANGS = $(shell (ls locale | grep -E '^..$$'))
 
 manpages = $(shell (ls debian/*.md | sed 's/\([0-9]\).md/\1/'))
 
@@ -12,7 +12,7 @@ manpages = $(shell (ls debian/*.md | sed 's/\([0-9]\).md/\1/'))
 override_dh_auto_clean:
 	dh_auto_clean
 	for lang in $(LLANGS) ; do\
-	    rm -f "locales/$$lang/LC_MESSAGES/pwndck.mo"; \
+	    rm -f "locale/$$lang/LC_MESSAGES/pwndck.mo"; \
 	done
 	rm -f debian/*.[1-8]
 	./debian/release_check || echo "\nRELEASE CHECK FAILURE\n"
@@ -32,7 +32,7 @@ override_dh_install:
 	dh_install
 	for lang in $(LLANGS) ; do\
 	    mkdir -p debian/pwndck/usr/share/locale/$$lang/LC_MESSAGES; \
-	    install -m 0644 locales/$$lang/LC_MESSAGES/pwndck.mo \
+	    install -m 0644 locale/$$lang/LC_MESSAGES/pwndck.mo \
 	            debian/pwndck/usr/share/locale/$$lang/LC_MESSAGES/pwndck.mo; \
 	done
 	dh_installman debian/*.[1-8]
