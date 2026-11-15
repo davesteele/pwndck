@@ -3,7 +3,7 @@
 
 SCRIPTDIR=$(dirname "$(realpath "$0")")
 PROJDIR=$(realpath "$SCRIPTDIR/..")
-LOCALEDIR=$(realpath "$PROJDIR/locales")
+LOCALEDIR=$(realpath "$PROJDIR/locale")
 
 PROJ=$(cat "$PROJDIR/pyproject.toml" | grep ^name | head -1 | sed -E 's/^.+\"(.+)\".*/\1/')
 VER=$(cat "$PROJDIR/pyproject.toml" | grep version | head -1 | sed -E 's/^.+\"(.+)\".*/\1/')

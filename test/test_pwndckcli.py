@@ -65,7 +65,7 @@ def test_use_verbose(passwords, result):
 def test_main_wrap_exceptions(monkeypatch, capsys, egception, lang, substring):
     monkeypatch.setattr(sys, "exit", lambda x: -2)
 
-    locale_dir = str(Path(__file__).resolve().parents[1] / "locales")
+    locale_dir = str(Path(__file__).resolve().parents[1] / "locale")
 
     if lang and lang != "en":
         translation = gettext.translation(
