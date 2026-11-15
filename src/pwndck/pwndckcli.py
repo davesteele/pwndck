@@ -13,7 +13,6 @@ import sys
 import textwrap
 import types
 from collections.abc import Iterable
-from pathlib import Path
 
 from pwndck.db_size import estimate_db, fmt_num
 from pwndck.flexi_formatter import FlexiHelpFormatter
@@ -21,19 +20,7 @@ from pwndck.processpw import PwndException, process_pw
 from pwndck.quiet_print import Q
 from pwndck.version import __version__
 
-
-def locale_dir():
-    module_path = Path(__file__).resolve()
-
-    locale_dir = module_path.parents[2] / "locales"
-
-    if not locale_dir.exists():
-        locale_dir = Path("/usr/share/locale")
-
-    return locale_dir
-
-
-lang = gettext.translation("pwndck", localedir=locale_dir(), fallback=True)
+lang = gettext.translation("pwndck", fallback=True)
 _ = lang.gettext
 
 
