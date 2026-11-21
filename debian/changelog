@@ -1,8 +1,8 @@
-pwndck (1.2-1) UNRELEASED; urgency=medium
+pwndck (1.2-1) unstable; urgency=medium
 
   * General cleanup.
 
- -- David Steele <steele@debian.org>  Sat, 21 Nov 2026 15:34:23 -0500
+ -- David Steele <steele@debian.org>  Sat, 21 Nov 2026 15:40:57 -0500
 
 pwndck (1.1-1) unstable; urgency=medium
 
