@@ -1,6 +1,7 @@
 #!/usr/bin/make -f
 
 export PYBUILD_NAME=pwndck
+export PYBUILD_TEST_ARGS = -m "always_run"
 
 LLANGS = $(shell (ls locale | grep -E '^..$$'))
 
@@ -24,9 +25,6 @@ override_dh_auto_build:
 	  pandoc $$mn.md -s -t man -o $$mn; \
 	  sed -i 's/\\\[en\]/\\\-/' $$mn; \
 	done
-
-override_dh_auto_test:
-	pytest -m "not webtest"
 
 override_dh_install:
 	dh_install

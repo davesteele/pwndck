@@ -5,6 +5,7 @@ Build-Depends:
     debhelper-compat (=13),
     pybuild-plugin-pyproject,
     dh-python,
+    python3-all,
     python3 (>= 3.9),
     python3-poetry-core,
     pandoc,
